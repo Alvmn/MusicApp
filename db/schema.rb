@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811082604) do
+ActiveRecord::Schema.define(version: 20140812155210) do
+
+  create_table "instruments", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
 
   create_table "midis", force: true do |t|
     t.integer "song_id"
@@ -24,18 +30,18 @@ ActiveRecord::Schema.define(version: 20140811082604) do
   end
 
   create_table "songs", force: true do |t|
-    t.string "title"
-    t.string "image"
-    t.string "instrument"
-    t.string "cathegory"
-    t.string "tag1"
-    t.string "tag2"
-    t.string "tag3"
-    t.string "tag4"
-    t.string "tag5"
-    t.string "tag6"
-    t.string "tag7"
-    t.string "tag8"
+    t.string  "title"
+    t.string  "image"
+    t.integer "instrument_id", limit: 255
+    t.string  "cathegory"
+    t.string  "tag1"
+    t.string  "tag2"
+    t.string  "tag3"
+    t.string  "tag4"
+    t.string  "tag5"
+    t.string  "tag6"
+    t.string  "tag7"
+    t.string  "tag8"
   end
 
 end

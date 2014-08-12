@@ -1,0 +1,21 @@
+<h1>Music App</h1>
+<div>
+<%= form_tag({controller: "instrument", action: "index"}, {method: "get"}) do %>
+<%= hidden_field_tag(:instrument, "saxo") %> 
+<%= submit_tag('Saxofón', width:"100px") %>
+<% end %>
+<br>
+</div>
+<div>
+<%= form_tag({controller: "instrument", action: "index"}, {method: "get"}) do %>
+<%= hidden_field_tag(:instrument, "piano") %> 
+<%= image_submit_tag('/piano_henar.svg', width:"100px") %>
+<% end %>
+<br>
+</div>
+<div>
+<%= form_tag({controller: "instrument", action: "index"}, {method: "get"}) do %>
+<%= hidden_field_tag(:instrument, "guitar") %> 
+<%= submit_tag("Guitar") %>
+<% end %><br>
+</div>

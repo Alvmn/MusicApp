@@ -1,3 +1,8 @@
+<%= form_tag(instrument_found_songs_path, {method: "get"}) do %>
+<%= text_area_tag(:title,"", placeholder: "Buscar canción") %><br> 
+<%= submit_tag('Buscar canción', width:"100px") %>
+<% end %>
+
 <ul>
 <% @songs.each do |song| %>
 	<li><%= link_to(song.title, instrument_path(song)) %></li>

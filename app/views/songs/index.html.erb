@@ -1,1 +1,9 @@
-<h1>Songs</h1>
+<h1><%= @instrument.name %> Songs</h1>
+<h1></h1>
+
+<ul>
+<% @songs.each do |song| %>
+	<li><%= link_to song.title, instrument_song_path(@instrument, song) %></li>
+	<li><%= song.category %></li>
+<% end %>
+</ul>

@@ -1,4 +1,4 @@
-class InstrumentController < ApplicationController
+class InstrumentsController < ApplicationController
 	before_action :set_instrument, only: [:show]
 
 	def index
@@ -6,8 +6,9 @@ class InstrumentController < ApplicationController
 	end
 
 	def show
-		@song = @instrument.songs.find params[:id]
+		@songs = @instrument.songs
 	end
+
 	def found_songs
 		@songs = Song.where "title LIKE ?", "%#{params[:title]}%" # Mejorar para buscar canciones 
 		#título parecido al introducido

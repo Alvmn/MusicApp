@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'instruments#index'
-    get "/instrument/found_songs" => "instrument#found_songs"
+    get "instruments/:instrument_id/songs/found_songs" => "songs#found_songs"
+    post "instruments/:instrument_id/songs/found_songs" => "songs#found_songs"
   resources :instruments do
     resources :songs
   end

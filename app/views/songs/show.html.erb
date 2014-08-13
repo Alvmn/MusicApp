@@ -1,5 +1,11 @@
 <h1><%= @song.title %> </h1>
 
 <%= image_tag(@song.title+".jpg") %>
-<audio src="/songs/SSBB Main Theme.mp3" controls preload/>
+<div><audio src="/songs/SSBB Main Theme.mp3" controls preload/></div>
+
+<div><video width="520" heigth="340" controls>
+	<source src="http://www.youtube.com/embed/PInuVXgxO1g" >
+</video>
+</div>
+<!-- <iframe width="854" height="510" src="//www.youtube.com/embed/PInuVXgxO1g" frameborder="0" allowfullscreen></iframe>	 -->
 <!-- http://es.slideshare.net/txipi/las-nuevas-api-de-audio-en-html5# -->

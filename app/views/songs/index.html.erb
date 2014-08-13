@@ -4,6 +4,5 @@
 <ul>
 <% @songs.each do |song| %>
 	<li><%= link_to song.title, instrument_song_path(@instrument, song) %></li>
-	<li><%= song.category %></li>
 <% end %>
 </ul>

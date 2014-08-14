@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+<div class="notice"><%= flash[:notice] %></div>
+<% end %>
 <h1><%= @instrument.name %> Songs</h1>
 <h1></h1>
 <%= form_tag({controller: "songs", action: "found_songs"}, {method: :post}) do %>

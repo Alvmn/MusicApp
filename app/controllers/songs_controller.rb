@@ -10,6 +10,9 @@ class SongsController < ApplicationController
 		@songs = @instrument.songs.where "title LIKE ?", "%#{params[:title]}%" # Mejorar para buscar canciones 
 		#título parecido al introducido
 	end
+	def new
+
+	end
 	protected
 
 	def set_instrument

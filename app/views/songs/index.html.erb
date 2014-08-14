@@ -1,7 +1,4 @@
-<% if flash[:notice] %>
-<div class="notice"><%= flash[:notice] %></div>
-<% end %>
-<h1><%= @instrument.name %> Songs</h1> <p><%= link_to("Create new song", new_instrument_song_path) %> </p>
+<h1><%= @instrument.name %> Songs</h1>
 <h1></h1>
 <%= form_tag({controller: "songs", action: "found_songs"}, {method: :post}) do %>
 <%= text_area_tag(:title,"", placeholder: "Buscar canción", size: "24x6") %>

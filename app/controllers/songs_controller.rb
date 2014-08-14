@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
 	before_action :set_instrument
+	before_filter :authenticate_user!, except: [:index, :show]
 	def index
 		@songs = @instrument.songs
 	end
@@ -37,6 +38,7 @@ class SongsController < ApplicationController
 		end
 
 	end
+	
 	protected
 
 	def set_instrument

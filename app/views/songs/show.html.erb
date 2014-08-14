@@ -1,25 +1,27 @@
 <head>
 </head>
 <body>
-	<div class="row">
-          <div class="small-12 columns">
-			<h1><%= @song.title.capitalize %> </h1>
-		  </div>
-	</div>	  	
+	<div class="body">
+		<div class="row">
+	          <div class="small-12 columns">
+				<h1><%= @song.title.capitalize %> </h1>
+			  </div>
+		</div>	  	
 
-	<div class="row">
-		<div class="small-3 columns">
-			<%= image_tag(@song.title+".jpg") %>
-		</div>
-		
-		<div class="small-9 columns">
-			<iframe width="500px" height="300px" src="//www.youtube.com/embed/PInuVXgxO1g" frameborder="0" allowfullscreen></iframe>
-		</div>
-	</div>	
-	<div class="row">
-		<div class="small-12 columns">
-			<audio src="/songs/SSBB Main Theme.mp3" controls preload />
-		</div>		
+		<div class="row">
+			<div class="small-3 columns">
+				<%= image_tag(@song.title+".jpg") %>
+			</div>
+			
+			<div class="small-9 columns">
+				<iframe width="500px" height="300px" src="//www.youtube.com/embed/PInuVXgxO1g" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="small-12 columns">
+				<audio src="/songs/SSBB Main Theme.mp3" controls preload />
+			</div>		
+		</div>	
 	</div>	
 
 

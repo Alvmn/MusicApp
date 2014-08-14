@@ -6,6 +6,8 @@ class SongsController < ApplicationController
 	end
 	def show
 		@song = @instrument.songs.find params[:id]
+		@midis = @song.midis
+		@videos = @song.videos
 	end
 	def found_songs
 		@songs = @instrument.songs.where "title LIKE ?", "%#{params[:title]}%" # Mejorar para buscar canciones 

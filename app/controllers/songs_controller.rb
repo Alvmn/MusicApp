@@ -20,8 +20,8 @@ class SongsController < ApplicationController
 		category = Category.find_by name: params[:song_category]
 		
 		tag1 = Tag.find_by(name: params[:song_tag1][:Cool]) unless params[:song_tag1][:Cool] == "no"
-		tag2 = Tag.find_by(name: params[:song_tag2][:Long]) unless params[:song_tag2][:Long] == "no"
-		tag3 = Tag.find_by(name: params[:song_tag3][:Weird]) unless params[:song_tag2][:Weird] == "no"
+		tag2 = Tag.find_by(name: params[:song_tag2][:Hard]) unless params[:song_tag2][:Hard] == "no"
+		tag3 = Tag.find_by(name: params[:song_tag3][:Begginer]) unless params[:song_tag2][:Begginer] == "no"
 
 		@song.categories << category if category
 		@song.tags << tag1 if tag1

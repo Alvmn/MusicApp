@@ -1,14 +1,14 @@
-<% if flash[:alert] %>
-<div class="alert"><%= flash[:alert] %></div>
+<%= form_tag(controller: "songs", action: "create", method: "post") do %>
+	<%= text_field_tag(:song_title,"", placeholder:"Song title...", size: "24x6") %>
+	<%= text_area_tag(:youtube_link,"", placeholder:"Youtube link...") %>
+	<% @categories.each do |category| %>
+		<%= radio_button_tag(:song_category, category.name ) %><%= label_tag(category.name) %>
+	<% end %>	
+	<h1>Tags </h1>
+	<%= check_box(:song_tag1, "Cool", {}, 'Cool', "no") %> <%= label_tag("Cool") %>
+	<%= check_box(:song_tag2, "Hard", {}, 'Hard', "no") %> <%= label_tag("Hard") %>
+	<%= check_box(:song_tag3, "Begginer", {}, 'Begginer', "no") %> <%= label_tag("Begginer") %>
+	<%= submit_tag("Submit") %>
 <% end %>
 
-<%= form_tag(controller: "songs", action: "create", method: "post") do %>
-<%= text_field_tag(:song_title,"", placeholder:"Song title...", size: "24x6") %>
-<%= text_area_tag(:youtube_link,"", placeholder:"Youtube link...") %>
-<%= radio_button_tag(:song_category,"Classical") %><%= label_tag("Classical") %>
-<%= radio_button_tag(:song_category,"Rock") %><%= label_tag("Rock") %>
-<%= radio_button_tag(:song_category,"Jazz") %><%= label_tag("Jazz") %>
-<%= radio_button_tag(:song_category,"Blues") %><%= label_tag("Blues") %>
-<%= submit_tag("Submit") %>
-<% end %>
 

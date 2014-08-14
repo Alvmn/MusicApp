@@ -33,4 +33,4 @@ Category.create(name:'Dubstep')
 
 Admin.create(email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin')
 
-smashbros = Instrument.find(1).create title: "Smash Bros Brawl"
+smashbros = Instrument.find(1).songs.create(title: "Smash Bros Brawl")

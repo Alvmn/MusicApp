@@ -31,5 +31,5 @@ Category.create(name:'Pop')
 Category.create(name:'Rap')
 Category.create(name:'Blues')
 Category.create(name:'Dubstep')
-# Admin.create(email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin')
+Admin.create(email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin')
 

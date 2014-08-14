@@ -13,3 +13,4 @@
 	<li><%= link_to song.title, instrument_song_path(@instrument, song) %></li>
 <% end %>
 </ul>
+<%= button_to('Add song', new_instrument_song_path, method: :get) %>

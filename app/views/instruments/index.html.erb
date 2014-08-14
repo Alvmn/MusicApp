@@ -4,4 +4,5 @@
   <% end %>
 <ul>
 <%= render @instruments %>
+<%= button_to('Add instrument', new_instrument_path, method: :get) %>
 </ul>

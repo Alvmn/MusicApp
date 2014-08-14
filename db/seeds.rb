@@ -13,7 +13,6 @@ guitarsongs = Instrument.find(2).songs.create([{title: "Guitar song demo 1"}, {t
 violinsongs = Instrument.find(3).songs.create([{title: "Violin song demo 1"}, {title: "Violin song demo 2"}])
 pianosongs = Instrument.find(4).songs.create([{title: "Piano song demo 1"}, {title: "Piano song demo 2"}])
 saxosongs = Instrument.find(5).songs.create([{title: "Saxophone song demo 1"}, {title: "Saxophone song demo 2"}])
-<<<<<<< HEAD
 classical =Category.create(name:'Classical')
 jazz = Category.create(name:'Jazz')
 rock = Category.create(name:'Rock')

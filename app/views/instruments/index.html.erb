@@ -1,8 +1,18 @@
-<h1> MusicApp </h1>
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
-<ul>
-<%= render @instruments %>
-<%= button_to('Add instrument', new_instrument_path, method: :get) %>
-</ul>
+<div class="body">
+	<div class="row">	
+		<div class="small-9 columns">
+		<h1> MusicApp </h1>
+		</div>
+	</div>	
+	<div class="row">
+		<div class="small-9 colunms">
+			<% if flash[:notice] %>
+			    <div class="notice"><%= flash[:notice] %></div>
+			  <% end %>
+			
+			<%= render @instruments %>
+			<%= button_to('Add instrument', new_instrument_path, method: :get) %>
+			
+		</div>
+	</div>		
+</div>	

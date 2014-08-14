@@ -1,17 +1,26 @@
-<h1><%= @instrument.name.capitalize %> songs</h1>
-<h1></h1>
-<%= form_tag({controller: "songs", action: "found_songs"}, {method: :post}) do %>
-<%= text_area_tag(:title,"", placeholder: "Buscar canción", size: "24x6") %>
-<%= submit_tag("Submit") %>
-<% end %>
+<div class="body">
+	<div class="row">		
+		<div class="small-12 columns">
+			<h1><%= @instrument.name.capitalize %> songs</h1>
+			<%= form_tag({controller: "songs", action: "found_songs"}, {method: :post}) do %>
+			<%= text_area_tag(:title,"", placeholder: "Buscar canción", size: "24x6") %>
+			<%= submit_tag("Submit") %>
+			<% end %>
+		</div>
+	</div>	
 
-<ul>
-<% @songs.each do |song| %>
-	<li><%= link_to song.title, instrument_song_path(@instrument, song) %></li>
-<% end %>
-</ul>
-<%= button_to('Add song', new_instrument_song_path, method: :get) %>
-<br>
-<br>
-<br>
-<%= render 'footer' %>
+	<div class="row">		
+		<div class="small-12 columns">
+			<ul>
+			<% @songs.each do |song| %>
+				<li><span><%= link_to song.title, instrument_song_path(@instrument, song) %></span></li>
+			<% end %>
+			</ul>
+			<%= button_to('Add song', new_instrument_song_path, method: :get) %>
+			<br>
+			<br>
+			<br>
+			<%= render 'footer' %>
+		</div>
+	</div>		
+</div>	

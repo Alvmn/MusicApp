@@ -1,6 +1,14 @@
 h1 {
 	margin: 0px;
-	margin-top: 30px;
+	margin-top: 50px;
+	padding-left: 650px;
+	padding-top: 10px;
+}
+h2{
+	margin: 0px;
+	margin-top: 50px;
+	padding-left: 500px;
+	padding-top: 10px;
 }
 img {
 	width: 200px;
@@ -31,12 +39,53 @@ audio {
 body {
 	background-image: url(/images/music-wallpaper-colorful-abstract-wallpaper-music-picture-music-wallpaper.jpg);
 	z-index: -100;
+	background-size: cover;
+
 }
 .body {
-	width: 80%;
-	height: 90%;
+	width: 90%;
+	height: 100%;
 	background-color: rgba(173, 173, 0173, 0.6);
-	border-radius:5%;
+	border-radius:10px;
 	margin-left: 20px;
+	margin-top: 50px;
 
+}
+textarea {
+	width: 300px;
+	margin-left: 600px;
+	margin-top: 80px;
+}
+textarea[rows]{
+	height: 50px;
+}
+ul {
+	padding-left: 700px;
+}
+
+a{
+	color: black;
+}
+button{
+	margin-top: 40px;
+	border-radius: 10px;
+}
+
+input {
+	background-color: pink; 
+	border-radius: 10px;
+	margin-top: 20px;
+	margin-left: 700px;
+	
+}
+
+.instrument_button {
+	padding-left: 700px;
+}
+.login {
+	margin-left: -180px !important;
+}
+label {
+	color: black;
+	font-weight: bold;
 }

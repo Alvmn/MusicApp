@@ -25,7 +25,7 @@ img {
 iframe {
 	margin-top: 50px;
 	margin-right: 0px;
-	margin-left: 200px;
+	/*margin-left: 200px;*/
 
 }
 
@@ -33,14 +33,14 @@ audio {
 	width: 300px;
 	height: 60px;
 	margin-top: 25px;
-	margin-left: 536px;
+	/*margin-left: 536px;*/
 	padding-bottom: 10px;
 }
 .row {
 	max-width: 99999px;
 }
 body {
-	background-image: url(/images/music-wallpaper-colorful-abstract-wallpaper-music-picture-music-wallpaper.jpg);
+	background-image: url(/images/wallpaper1.jpg);
 	z-index: -100;
 	background-size: cover;
 
@@ -97,9 +97,9 @@ label {
 
 
 a.login{
-	color: blue;
+	color: green;
 }
 
 a.login:hover {
-	color: green;
+	color: blue;
 }

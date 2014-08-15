@@ -1,0 +1,16 @@
+<%= form_tag(controller: "songs", action: "edit", method: "post") do %>
+	<%= text_field_tag(:song_title,"", placeholder:"Change song title...", size: "24x6") %>
+	<% @categories.each do |category| %>
+		<%= radio_button_tag(:song_category, category.name ) %><%= label_tag(category.name) %>
+	<% end %>	
+	<h1>Tags </h1>
+	<%= check_box(:song_tag1, "Cool", {}, 'Cool', "no") %> <%= label_tag("Cool") %>
+	<%= check_box(:song_tag2, "Hard", {}, 'Hard', "no") %> <%= label_tag("Hard") %>
+	<%= check_box(:song_tag3, "Begginer", {}, 'Begginer', "no") %> <%= label_tag("Begginer") %>
+	<%= submit_tag("Submit") %>
+	<h1> Video & URL </h1>
+	<%= text_area_tag(:youtube_link,"", placeholder:"Change youtube link...") %>
+	<%= text_area_tag(:midi_link,"", placeholder:"Change midi link...") %>
+<% end %>
+
+<%= render 'footer' %>

@@ -13,9 +13,8 @@
 				<%= image_tag(@song.title+".jpg") %>
 			</div>
 			<% @videos.each do |video| %>
-				<div class="small-9 columns">
-					<iframe width="500px" height="300px" src="<%= video.url %>" frameborder="0" allowfullscreen></iframe>
-				</div>
+				<%= raw video.url %> <!-- El raw del principio hace que lo de dentro del delimitador
+				rails se convierta en código HTML -->
 			<% end %>
 		</div>	
 		<div class="row">

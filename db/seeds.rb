@@ -35,4 +35,4 @@ Admin.create(email: 'admin@admin.com', password: 'adminadmin', password_confirma
 
 smashbros = Instrument.find(1).songs.create(title: "Smash Bros Brawl")
 midis_smashbros = smashbros.midis.create(url:"SSBB Main Theme.mp3")
-youtube_videos = smashbros.videos.create(url:"//www.youtube.com/embed/PInuVXgxO1g")
+youtube_videos = smashbros.videos.create(url:'<iframe width="640" height="390" src="//www.youtube.com/embed/gnAyTNUOkvc" frameborder="0" allowfullscreen></iframe>')

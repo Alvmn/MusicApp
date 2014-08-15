@@ -34,6 +34,19 @@ class SongsController < ApplicationController
 		end
 
 	end
+	def destroy
+	    @song = @instrument.songs.find params[:id]
+	    @youtube_videos = @song.videos
+	    @midis = @song.midis
+	    if @movie.destroy && @youtube_videos.destroy && @midis.destroy
+	      flash[:alert] = "Song succesfully deleted!"
+	      redirect_to action: 'show', controller: 'songs'
+	    else
+	      flash[:alert] = "Song NOT deleted!"
+	      return "show"
+	    end
+
+  	end
 	
 	protected
 

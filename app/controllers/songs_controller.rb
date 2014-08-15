@@ -1,18 +1,22 @@
 class SongsController < ApplicationController
 	before_filter :authenticate!, except: [:index, :show] #autenticate! es una función creada por nosotros, más abajo
 	before_action :set_instrument
+	
 	def index
 		@songs = @instrument.songs
 	end
+
 	def show
 		@song = @instrument.songs.find params[:id]
 		@midis = @song.midis
 		@videos = @song.videos
 	end
+
 	def found_songs
 		@songs = @instrument.songs.where "title LIKE ?", "%#{params[:title]}%" # Mejorar para buscar canciones 
 		#título parecido al introducido
 	end
+
 	def new
 		@categories = Category.all
 		@song = @instrument.songs.new
@@ -34,6 +38,22 @@ class SongsController < ApplicationController
 		end
 
 	end
+
+	def edit # EL EDIT Y EL UPDATE ESTÁ EN PROCESO
+      @song = @instrument.songs.find params[:id]
+  	end
+
+  	def update
+      song = @instrument.songs.find params[:id]
+   	  song.update title: params[:song_title]
+   	  # youtube_videos = song.videos.update
+	   if song.valid?
+	   	  redirect_to action: 'index', controller: 'songs'
+	   else
+	      render 'edit'
+	   end
+  	end
+
 	def destroy
 	    @song = @instrument.songs.find params[:id]
 	    @youtube_videos = @song.videos
@@ -58,6 +78,7 @@ class SongsController < ApplicationController
 	   authenticate_admin! || authenticate_user!
 	   @current_user = admin_signed_in? ? current_admin : current_user
 	end
+
 	def categories_tags
 		category = Category.find_by name: params[:song_category]
 		

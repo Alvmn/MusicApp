@@ -127,7 +127,13 @@ a.login:hover {
 }
 
 #flash_alert{
-	color: red;
-	font-weight: bold;
-	font-size: 50px;
+	color: 				red;
+	font-weight: 		bold;
+	font-size: 			50px;
 } 
+#flash_notice {
+	color: 				red;
+	font-weight:		bold;
+	font-size: 			50px;
+
+}

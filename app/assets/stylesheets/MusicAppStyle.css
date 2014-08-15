@@ -1,8 +1,8 @@
 h1 {
 	margin: 0px;
-	margin-top: 50px;
+	/*margin-top: 50px;*/
 	/*padding-left: 650px;*/
-	padding-top: 10px;
+	padding-top: 20px;
 }
 h2{
 	margin: 0px;
@@ -37,17 +37,17 @@ audio {
 	padding-bottom: 10px;
 }
 .row {
-	max-width: 99999px;
+	max-width: 1349px;
 }
 body {
 	background-image: url(/images/wallpaper1.jpg);
 	z-index: -100;
-	background-size: cover;
+	background-size: 100%;
 
 }
 .body {
 	width: 90%;
-	height: 100%;
+	max-height: 80%;
 	background-color: rgba(173, 173, 0173, 0.6);
 	border-radius:10px;
 	margin-left: 20px;

@@ -1,4 +1,4 @@
-class ApplicationPolicy
+class InstrumentsPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    true
   end
 
   def show?
@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    current_user.has_role? :admin
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    current_user.has_role? :admin
   end
 
   def edit?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    current_user.has_role? :admin
   end
 
   def scope

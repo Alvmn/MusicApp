@@ -10,9 +10,11 @@ class InstrumentsController < ApplicationController
 	end
 	def new
 		@instrument = Instrument.new
+		authorize @instrument
 	end
 	def create
-		@instrument = Instrument.new entry_params
+		@instrument = Instrument.new instrument_params
+		authorize @instrument
 		if @instrument.save 
 			flash[:notice] = 'Your instrument has been created!'
 			redirect_to action: 'index', controller: 'instruments'	
@@ -26,5 +28,9 @@ class InstrumentsController < ApplicationController
 
 	def set_instrument
 	  @instrument = Instrument.find(params[:id])
+	end
+
+	def instrument_params
+	  params.require(:instrument).permit(:name)
 	end
 end

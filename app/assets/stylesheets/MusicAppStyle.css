@@ -1,66 +1,75 @@
 h1 {
-	margin: 0px;
+	margin: 		0px;
 	/*margin-top: 50px;*/
 	/*padding-left: 650px;*/
-	padding-top: 20px;
+	padding-top: 	20px;
 }
+
 h2{
-	margin: 0px;
-	margin-top: 50px;
+	margin: 		0px;
+	margin-top: 	50px;
 	/*padding-left: 500px;*/
-	padding-top: 10px;
+	padding-top: 	10px;
 }
 h3 {
-	margin-top: 50px;
+	margin-top: 	50px;
 }
 img {
-	width: 200px;
-	height: 300px;
-	margin: 0px;
-	margin-top: 50px;
-	margin-left: 40px;
+	width: 			200px;
+	height: 		300px;
+	margin: 		0px;
+	margin-top: 	50px;
+	margin-left: 	40px;
 
 }
 
 iframe {
-	margin-top: 50px;
-	margin-right: 0px;
+	margin-top: 	50px;
+	margin-right: 	0px;
 	/*margin-left: 200px;*/
 
 }
 
 audio {
-	width: 300px;
-	height: 60px;
-	margin-top: 25px;
+	width: 			300px;
+	height: 		60px;
+	margin-top: 	25px;
 	/*margin-left: 536px;*/
 	padding-bottom: 10px;
 }
 .row {
-	max-width: 1349px;
+	max-width: 999999px;
 }
 body {
 	background-image: url(/images/wallpaper1.jpg);
-	z-index: -100;
-	background-size: 100%;
+	z-index: 			-100;
+	background-size: 	100%;
 
 }
 .body {
-	width: 90%;
-	max-height: 80%;
-	background-color: rgba(173, 173, 0173, 0.6);
-	border-radius:10px;
-	margin-left: 20px;
-	margin-top: 50px;
+	width: 				90%;
+	max-height: 		80%;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius:		10px;
+	margin-left: 		20px;
+	margin-top: 		50px;
 
 }
+.try{
+	width: 				60%;
+	max-height:			80%;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius:		10px;
+	margin-left: 		20px;
+	margin-top: 		50px;
+}
 textarea {
-	width: 300px;
+	width: 				300px;
 	/*margin-left: 600px;*/
-	margin-top: 80px;
+	margin-top: 		80px;
 }
 textarea[rows]{
-	height: 50px;
+	height: 			50px;
 }
 ul {
 	/*padding-left: 700px;*/
@@ -70,36 +79,49 @@ a{
 	color: black;
 }
 button{
-	margin-top: 40px;
-	border-radius: 10px;
+	margin-top: 		80px;
+	border-radius: 		10px;
+	bbackground: #f1e767; /* Old browsers */
+	background: -moz-linear-gradient(top, #f1e767 0%, #feb645 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1e767), color-stop(100%,#feb645)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #f1e767 0%,#feb645 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #f1e767 0%,#feb645 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #f1e767 0%,#feb645 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #f1e767 0%,#feb645 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645',GradientType=0 ); /* IE6-9 */
 }
 
 input {
 	background-color: pink; 
-	border-radius: 10px;
-	margin-top: 20px;
+	border-radius: 		10px;
+	margin-top: 		20px;
 	/*margin-left: 700px;*/
 
 }
 #instrument_name {
-	margin-top: 50px;
+	margin-top: 		50px;
 }
 
 .instrument_button {
 	/*padding-left: 700px;*/
-	border-radius: 10px;
+	border-radius: 		10px;
 }
 
 label {
-	color: black;
-	font-weight: bold;
+	color: 				black;
+	font-weight: 		bold;
 }
 
 
 a.login{
-	color: green;
+	color: 				green;
 }
 
 a.login:hover {
-	color: blue;
+	color: 				blue;
+}
+
+
+[class*="column"]+[class*="column"]:last-child {
+	float: 				left;
 }

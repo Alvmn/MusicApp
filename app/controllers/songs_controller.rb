@@ -13,8 +13,14 @@ class SongsController < ApplicationController
 	end
 
 	def found_songs
-		@songs = @instrument.songs.where "title LIKE ?", "%#{params[:title]}%" # Mejorar para buscar canciones 
+		@songs = @instrument.songs.where "title LIKE ?", "%#{params[:title]}%"# Mejorar para buscar canciones 
+		unless @songs.empty? 
 		#título parecido al introducido
+			render 'found_songs'
+		else 
+		flash[:alert] = 'Ooohps! We could noy find your song, did you write it right?'
+		render 'index'
+		end	
 	end
 
 	def new

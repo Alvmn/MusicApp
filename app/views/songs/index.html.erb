@@ -1,6 +1,6 @@
 <div class="body">
 	<div class="row">		
-		<div class="small-12 columns">
+		<div class="small-4 small-offset-4 columns">
 			<h1><%= @instrument.name.capitalize %> songs</h1>
 			<%= form_tag({controller: "songs", action: "found_songs"}, {method: :post}) do %>
 			<%= text_area_tag(:title,"", placeholder: "Buscar canción", size: "24x6") %>
@@ -10,10 +10,14 @@
 	</div>	
 
 	<div class="row">		
-		<div class="small-12 columns">
+		<div class="small-12  columns">
 			<ul>
 			<% @songs.each do |song| %>
-				<li><span><%= link_to song.title, instrument_song_path(@instrument, song) %> <%= link_to(" Delete", instrument_song_path(@instrument, song), method: "delete", data: {confirm: "Are you sure?"}) %> </span></li>
+				<li><span><%= link_to song.title, instrument_song_path(@instrument, song) %>
+					<% if admin_signed_in? %>
+					   <%= link_to(" Delete", instrument_song_path(@instrument, song), method: "delete", data: {confirm: "Are you sure?"}) %> 
+					<% end %>
+				 </span></li>
 			<% end %>
 			</ul>
 			<%= button_to('Add song', new_instrument_song_path, method: :get) %>

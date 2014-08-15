@@ -14,7 +14,7 @@
 			<ul>
 			<% @songs.each do |song| %>
 				<li><span><%= link_to song.title, instrument_song_path(@instrument, song) %>
-					<% if current_user.has_role? :admin %>
+					<% if @user && @user.has_role?(:admin) %>
 					   <%= link_to(" Delete", instrument_song_path(@instrument, song), method: "delete", data: {confirm: "Are you sure?"}) %> 
 					<% end %>
 				 </span></li>

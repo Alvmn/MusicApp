@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-	before_filter :authenticate!, except: [:index, :show] #autenticate! es una función creada por nosotros
+	before_filter :authenticate!, except: [:index, :show] #autenticate! es una función creada por nosotros, más abajo
 	before_action :set_instrument
 	def index
 		@songs = @instrument.songs
@@ -38,12 +38,12 @@ class SongsController < ApplicationController
 	    @song = @instrument.songs.find params[:id]
 	    @youtube_videos = @song.videos
 	    @midis = @song.midis
-	    if @movie.destroy && @youtube_videos.destroy && @midis.destroy
+	    if @song.destroy && @youtube_videos.destroy && @midis.destroy
 	      flash[:alert] = "Song succesfully deleted!"
-	      redirect_to action: 'show', controller: 'songs'
+	      redirect_to action: 'index', controller: 'songs'
 	    else
 	      flash[:alert] = "Song NOT deleted!"
-	      return "show"
+	      redirect_to action: 'index', controller: 'songs'
 	    end
 
   	end

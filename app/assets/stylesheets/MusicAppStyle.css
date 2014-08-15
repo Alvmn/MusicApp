@@ -82,10 +82,16 @@ input {
 .instrument_button {
 	padding-left: 700px;
 }
-.login {
-	margin-left: -180px !important;
-}
+
 label {
 	color: black;
 	font-weight: bold;
+}
+
+a.login{
+	color: blue;
+}
+
+a.login:hover {
+	color: green;
 }

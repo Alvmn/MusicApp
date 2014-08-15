@@ -10,9 +10,18 @@
 			    <div class="notice"><%= flash[:notice] %></div>
 			  <% end %>
 			
-			<%= render @instruments %>
-			<%= button_to('Add instrument', new_instrument_path, method: :get) %>
+			
 			
 		</div>
-	</div>		
+	</div>
+	<div class="row">
+		
+			<%= render @instruments %>
+						
+	</div>	
+	<div class="row">
+		<div class="small-2 small-offset-1 columns">
+			<%= button_to('Add instrument', new_instrument_path, method: :get) %>
+		</div>	
+	</div>			
 </div>	

@@ -15,7 +15,7 @@ class InstrumentPolicy
   end
 
   def create?
-    @user.has_role?(:admin)
+    @user.has_role? :admin
   end
 
   def new?
@@ -23,7 +23,7 @@ class InstrumentPolicy
   end
 
   def update?
-    current_user.has_role? :admin
+    @user.has_role? :admin
   end
 
   def edit?
@@ -31,7 +31,7 @@ class InstrumentPolicy
   end
 
   def destroy?
-    current_user.has_role? :admin
+    @user.has_role? :admin
   end
 
   def scope

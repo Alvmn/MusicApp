@@ -31,7 +31,7 @@ class SongPolicy
   end
 
   def destroy?
-    current_user.signed_in?
+    @user
   end
 
   def scope

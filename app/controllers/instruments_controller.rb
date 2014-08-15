@@ -1,5 +1,4 @@
 class InstrumentsController < ApplicationController
-	before_filter :authenticate_admin!, except: [:index, :show]
 	before_action :set_instrument, only: [:show]
 
 	def index
@@ -27,9 +26,5 @@ class InstrumentsController < ApplicationController
 
 	def set_instrument
 	  @instrument = Instrument.find(params[:id])
-	end
-
-	def entry_params
-		params.require(:instrument).permit(:name)
 	end
 end

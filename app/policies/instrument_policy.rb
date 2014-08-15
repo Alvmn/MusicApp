@@ -15,7 +15,7 @@ class InstrumentPolicy
   end
 
   def create?
-    current_user.has_role? :admin
+    @user.has_role?(:admin)
   end
 
   def new?

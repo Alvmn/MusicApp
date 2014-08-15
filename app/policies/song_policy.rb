@@ -15,7 +15,7 @@ class SongPolicy
   end
 
   def create?
-    current_user.signed_in?
+    @user
   end
 
   def new?
@@ -23,7 +23,7 @@ class SongPolicy
   end
 
   def update?
-    current_user.signed_in?
+    @user
   end
 
   def edit?

@@ -12,15 +12,18 @@
 			<div class="small-3 columns">
 				<%= image_tag(@song.title+".jpg") %>
 			</div>
-			
-			<div class="small-9 columns">
-				<iframe width="500px" height="300px" src="//www.youtube.com/embed/PInuVXgxO1g" frameborder="0" allowfullscreen></iframe>
-			</div>
+			<% @videos.each do |video| %>
+				<div class="small-9 columns">
+					<iframe width="500px" height="300px" src="<%= video.url %>" frameborder="0" allowfullscreen></iframe>
+				</div>
+			<% end %>
 		</div>	
 		<div class="row">
-			<div class="small-12 columns">
-				<audio src="/songs/SSBB Main Theme.mp3" controls preload />
-			</div>		
+			<% @midis.each do |midi| %>
+				<div class="small-12 columns">
+					<audio src="/songs/<%= midi.url %>" controls preload />
+				</div>	
+			<% end %>	
 		</div>	
 
 	</div>	

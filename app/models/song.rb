@@ -1,4 +1,6 @@
 class Song < ActiveRecord::Base
+	resourcify
+	
 	has_many :midis, :dependent => :destroy
 	has_many :music_sheets, :dependent => :destroy
 	has_many :videos,:dependent => :destroy

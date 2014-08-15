@@ -13,7 +13,11 @@
 		<div class="small-12 columns">
 			<ul>
 			<% @songs.each do |song| %>
-				<li><span><%= link_to song.title, instrument_song_path(@instrument, song) %> <%= link_to(" Delete", instrument_song_path(@instrument, song), method: "delete", data: {confirm: "Are you sure?"}) %> </span></li>
+				<li><span><%= link_to song.title, instrument_song_path(@instrument, song) %>
+					<% if admin_signed_in? %>
+					   <%= link_to(" Delete", instrument_song_path(@instrument, song), method: "delete", data: {confirm: "Are you sure?"}) %> 
+					<% end %>
+				 </span></li>
 			<% end %>
 			</ul>
 			<%= button_to('Add song', new_instrument_song_path, method: :get) %>

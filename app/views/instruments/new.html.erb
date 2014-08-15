@@ -1,12 +1,19 @@
 <div class='body'>
-	<h1> Maybe we don´t have the instrument you were looking for, but you can create it </h1>
 	<% if flash[:notice] %>
 	    <div class="notice"><%= flash[:notice] %></div>
 	  <% end %>
-	<%= form_for @instrument do |f| %>
-	  <%= f.text_field :name, :size => "50x12"%>
-	  <%= f.submit "Create" %>
-	<% end %>
-
+	<div class="row">
+		<div class="small-12 columns">	
+			<h3> Maybe we don´t have the instrument you were looking for, but you can create it </h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-4 small-offset-4 columns">		
+			<%= form_for @instrument do |f| %>
+			  <%= f.text_field :name, :size => "50x12"%>
+			  <%= f.submit "Create" %>
+			<% end %>
+		</div>	
+	</div>		
 	<%= render 'footer' %>
 </div>	

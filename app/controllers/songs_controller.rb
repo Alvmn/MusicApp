@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-	before_filter :authenticate!, except: [:index, :show] #autenticate! es una función creada por nosotros, más abajo
+	before_filter :authenticate_user!, except: [:index, :show] #autenticate! es una función creada por nosotros, más abajo
 	before_action :set_instrument
 	
 	def index
@@ -26,11 +26,12 @@ class SongsController < ApplicationController
 	def new
 		@categories = Category.all
 		@song = @instrument.songs.new
+		authorize @song
 	end
 
 	def create
 		@song = @instrument.songs.new(title: params[:song_title]) 
-
+		authorize @song
 		if @song.save
 			categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
 			youtube_link = @song.videos.create url: params[:youtube_link]
@@ -47,11 +48,13 @@ class SongsController < ApplicationController
 
 	def edit # EL EDIT Y EL UPDATE ESTÁ EN PROCESO
       @song = @instrument.songs.find params[:id]
+      authorize @song
   	end
 
   	def update
       song = @instrument.songs.find params[:id]
    	  song.update title: params[:song_title]
+   	  authorize @song
    	  # youtube_videos = song.videos.update
 	   if song.valid?
 	   	  redirect_to action: 'index', controller: 'songs'
@@ -64,6 +67,8 @@ class SongsController < ApplicationController
 	    @song = @instrument.songs.find params[:id]
 	    @youtube_videos = @song.videos
 	    @midis = @song.midis
+	    authorize @song
+
 	    if @song.destroy && @youtube_videos.destroy && @midis.destroy
 	      flash[:alert] = "Song succesfully deleted!"
 	      redirect_to action: 'index', controller: 'songs'

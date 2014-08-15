@@ -1,5 +1,4 @@
 class InstrumentsController < ApplicationController
-	before_filter :authenticate_admin!, except: [:index, :show]
 	before_action :set_instrument, only: [:show]
 
 	def index
@@ -11,9 +10,11 @@ class InstrumentsController < ApplicationController
 	end
 	def new
 		@instrument = Instrument.new
+		authorize @instrument
 	end
 	def create
-		@instrument = Instrument.new entry_params
+		@instrument = Instrument.new instrument_params
+		authorize @instrument
 		if @instrument.save 
 			flash[:notice] = 'Your instrument has been created!'
 			redirect_to action: 'index', controller: 'instruments'	
@@ -29,7 +30,7 @@ class InstrumentsController < ApplicationController
 	  @instrument = Instrument.find(params[:id])
 	end
 
-	def entry_params
-		params.require(:instrument).permit(:name)
+	def instrument_params
+	  params.require(:instrument).permit(:name)
 	end
 end

@@ -32,8 +32,14 @@ Category.create(name:'Blues')
 Category.create(name:'Dubstep')
 
 
-admin = User.create(email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin')
-admin.add_role :admin
+admin3 = User.create(email: 'p.murcia.morilla@gmail.com', password: 'adminadmin', password_confirmation: 'adminadmin')
+admin3.add_role :admin
+
+admin2 = User.create(email: 'henar_d0el_96@hotmail.es', password: 'adminadmin', password_confirmation: 'adminadmin')
+admin2.add_role :admin
+
+admin1 = User.create(email: 'asuperalvaro@hotmail.com', password: 'adminadmin', password_confirmation: 'adminadmin')
+admin1.add_role :admin
 
 smashbros = Instrument.find(1).songs.create(title: "Smash Bros Brawl")
 midis_smashbros = smashbros.midis.create(url:"SSBB Main Theme.mp3")

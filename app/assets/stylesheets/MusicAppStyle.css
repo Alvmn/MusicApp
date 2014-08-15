@@ -125,3 +125,9 @@ a.login:hover {
 [class*="column"]+[class*="column"]:last-child {
 	float: 				left;
 }
+
+#flash_alert{
+	color: red;
+	font-weight: bold;
+	font-size: 50px;
+} 

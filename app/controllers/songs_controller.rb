@@ -18,7 +18,7 @@ class SongsController < ApplicationController
 		#título parecido al introducido
 			render 'found_songs'
 		else 
-		flash[:alert] = 'Ooohps! We could noy find your song, did you write it right?'
+		flash[:alert] = 'Ooohps! We could not find your song, did you write it right?'
 		render 'index'
 		end	
 	end

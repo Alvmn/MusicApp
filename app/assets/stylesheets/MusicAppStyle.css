@@ -83,16 +83,23 @@ input {
 	/*padding-left: 700px;*/
 	border-radius: 10px;
 }
-.login {
-	margin-left: -180px !important;
-}
+
 label {
 	color: black;
 	font-weight: bold;
 }
+
 #admin_email{
 	width: 300px;
 }
 #admin_password{
 	width: 200px;
+
+
+a.login{
+	color: blue;
+}
+
+a.login:hover {
+	color: green;
 }

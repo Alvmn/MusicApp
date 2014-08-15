@@ -31,6 +31,7 @@ Category.create(name:'Rap')
 Category.create(name:'Blues')
 Category.create(name:'Dubstep')
 
+
 Admin.create(email: 'admin@admin.com', password: 'adminadmin', password_confirmation: 'adminadmin')
 
 smashbros = Instrument.find(1).songs.create(title: "Smash Bros Brawl")

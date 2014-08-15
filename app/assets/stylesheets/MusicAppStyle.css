@@ -1,14 +1,17 @@
 h1 {
 	margin: 0px;
-	margin-top: 50px;
+	/*margin-top: 50px;*/
 	/*padding-left: 650px;*/
-	padding-top: 10px;
+	padding-top: 20px;
 }
 h2{
 	margin: 0px;
 	margin-top: 50px;
-	padding-left: 500px;
+	/*padding-left: 500px;*/
 	padding-top: 10px;
+}
+h3 {
+	margin-top: 50px;
 }
 img {
 	width: 200px;
@@ -22,7 +25,7 @@ img {
 iframe {
 	margin-top: 50px;
 	margin-right: 0px;
-	margin-left: 200px;
+	/*margin-left: 200px;*/
 
 }
 
@@ -30,21 +33,21 @@ audio {
 	width: 300px;
 	height: 60px;
 	margin-top: 25px;
-	margin-left: 536px;
+	/*margin-left: 536px;*/
 	padding-bottom: 10px;
 }
 .row {
-	max-width: 99999px;
+	max-width: 1349px;
 }
 body {
-	background-image: url(/images/music-wallpaper-colorful-abstract-wallpaper-music-picture-music-wallpaper.jpg);
+	background-image: url(/images/wallpaper1.jpg);
 	z-index: -100;
-	background-size: cover;
+	background-size: 100%;
 
 }
 .body {
 	width: 90%;
-	height: 100%;
+	max-height: 80%;
 	background-color: rgba(173, 173, 0173, 0.6);
 	border-radius:10px;
 	margin-left: 20px;
@@ -53,7 +56,7 @@ body {
 }
 textarea {
 	width: 300px;
-	margin-left: 600px;
+	/*margin-left: 600px;*/
 	margin-top: 80px;
 }
 textarea[rows]{
@@ -75,8 +78,11 @@ input {
 	background-color: pink; 
 	border-radius: 10px;
 	margin-top: 20px;
-	margin-left: 700px;
+	/*margin-left: 700px;*/
 
+}
+#instrument_name {
+	margin-top: 50px;
 }
 
 .instrument_button {
@@ -89,17 +95,11 @@ label {
 	font-weight: bold;
 }
 
-#admin_email{
-	width: 300px;
-}
-#admin_password{
-	width: 200px;
-}
 
 a.login{
-	color: blue;
+	color: green;
 }
 
 a.login:hover {
-	color: green;
+	color: blue;
 }

@@ -17,6 +17,6 @@ class CommentsController < ApplicationController
 	protected
 
 	def set_song
-		@song = Song.find(Instrument.song.id)
+		@song = Song.find params[:somg_id]
 	end
 end

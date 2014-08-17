@@ -31,8 +31,11 @@
 
 
 <!-- http://es.slideshare.net/txipi/las-nuevas-api-de-audio-en-html5# -->
+
+<ul>
+<% @comments.each do |comment| %>
+<li><%= comment.content %></li>
+<% end %>
+</ul>
 </body>
-
-
-
 <%= render 'footer' %>

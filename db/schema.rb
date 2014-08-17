@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815102439) do
+ActiveRecord::Schema.define(version: 20140817083721) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140815102439) do
     t.string  "title"
     t.string  "image"
     t.integer "instrument_id", limit: 255
+    t.string  "songwriter"
   end
 
   create_table "songs_tags", force: true do |t|

@@ -1,19 +1,22 @@
 class CommentsController < ApplicationController
+	before_action :set_song
+
 	def new
-		@comment = Comment.new
+		@comment = @song.comments.new
 	end
 
 	def create
-		@comment = Comment.create comment_params
+		@comment = @song.comments.new(content: params[:comment_content])
 		if @comment.save
-			redirect_to action: 'show', controller:'comment', comment_id: @comment.id
+			redirect_to action: 'show', controller:'comments', comment_id: @comment.id
 		else
 			render 'new'
 		end
 	end
 
-	private
-	def comment_params
-		params.require(:comment).permit(:content)
+	protected
+
+	def set_song
+		@song = Song.find(Instrument.song.id)
 	end
 end

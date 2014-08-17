@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     get "instruments/:instrument_id/songs/found_songs" => "songs#found_songs"
     post "instruments/:instrument_id/songs/found_songs" => "songs#found_songs"
   resources :instruments do
-    resources :songs
+    resources :songs do
+      resources :comments
+    end
   end
 
   # Example of regular route:

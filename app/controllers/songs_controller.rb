@@ -47,7 +47,7 @@ class SongsController < ApplicationController
 
 	end
 
-	def edit # EL EDIT Y EL UPDATE ESTÁ EN PROCESO
+	def edit
       @song = @instrument.songs.find params[:id]
       authorize @song
   	end

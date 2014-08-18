@@ -1,16 +1,24 @@
+<div class="body">
+<h3>Song title</h3>
 <%= form_tag(controller: "songs", action: "create", method: "post") do %>
 	<%= text_field_tag(:song_title,"", placeholder:"Song title...", size: "24x6") %>
 	<% @categories.each do |category| %>
 		<%= radio_button_tag(:song_category, category.name ) %><%= label_tag(category.name) %>
 	<% end %>	
-	<h1>Tags </h1>
+<h4> Song writer </h4>	
+
+	<%= text_field_tag(:songwriter,"", placeholder:"Song writer...", size: "24x6") %>
+
+
+	<h4>Tags </h4>
 	<%= check_box(:song_tag1, "Cool", {}, 'Cool', "no") %> <%= label_tag("Cool") %>
 	<%= check_box(:song_tag2, "Hard", {}, 'Hard', "no") %> <%= label_tag("Hard") %>
 	<%= check_box(:song_tag3, "Begginer", {}, 'Begginer', "no") %> <%= label_tag("Begginer") %>
 	<%= submit_tag("Submit") %>
-	<h1> Video & URL </h1>
+	<h4> Video & URL </h4>
 	<%= text_area_tag(:youtube_link,"", placeholder:"Youtube link...") %>
 	<%= text_area_tag(:midi_link,"", placeholder:"Midi link...") %>
 <% end %>
+</div>
 
 

@@ -61,6 +61,31 @@ body {
 	overflow-x: 		hidden;
 
 }
+
+.body2 {
+	width: 42%;
+	height: 600px;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius:		10px;
+	margin-left: 		20px;
+	margin-top: 		50px;
+	padding-bottom:		30px;
+	overflow: 			auto;
+	overflow-x: 		hidden;
+
+}
+
+.body3{
+	width: 42%;
+	height: 600px;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius:		10px;
+	margin-left: 		20px;
+	margin-top: 		50px;
+	padding-bottom:		30px;
+	overflow: 			auto;
+	overflow-x: 		hidden;
+}
 .try{
 	width: 				60%;
 	max-height:			80%;
@@ -88,7 +113,7 @@ a{
 button{
 	margin-top: 		80px;
 	border-radius: 		10px;
-	bbackground: #f1e767; /* Old browsers */
+	background: #f1e767; /* Old browsers */
 	background: -moz-linear-gradient(top, #f1e767 0%, #feb645 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1e767), color-stop(100%,#feb645)); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top, #f1e767 0%,#feb645 100%); /* Chrome10+,Safari5.1+ */
@@ -105,6 +130,37 @@ input {
 	/*margin-left: 700px;*/
 
 }
+#song_title{
+	width: 			500px;
+	margin-left: 	20px;
+
+}
+
+#songwriter {
+	width:			 500px;
+	margin-left: 	20px;
+}
+
+#user_email{
+	width:			 500px;
+	margin-left: 	20px;
+
+}
+#user_password{
+	width:			 500px;
+	margin-left: 	20px;
+}
+
+#user_password_confirmation{
+	width:			 500px;
+	margin-left: 	20px;
+}
+
+#user_current_password{
+	width:			 500px;
+	margin-left: 	20px;
+}
+
 #instrument_name {
 	margin-top: 		50px;
 }

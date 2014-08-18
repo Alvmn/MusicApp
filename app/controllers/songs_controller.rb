@@ -54,11 +54,11 @@ class SongsController < ApplicationController
   	end
 
   	def update
-      song = @instrument.songs.friendly.find params[:id]
-   	  song.update title: params[:song_title]
+      @song = @instrument.songs.friendly.find params[:id]
+   	  @song.update title: params[:song_title]
    	  authorize @song
    	  # youtube_videos = song.videos.update
-	   if song.valid?
+	   if @song.valid?
 	   	  redirect_to action: 'index', controller: 'songs'
 	   else
 	      render 'edit'

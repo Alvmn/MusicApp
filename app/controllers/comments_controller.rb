@@ -30,12 +30,20 @@ class CommentsController < ApplicationController
 	end
 
 	def edit
-		@comment = @song.comments.new
+		@comment = @song.comments.find params[:id]
 		authorize @comment
 	end
 
 	def update
+		@comment = @song.comments.find params[:id]
+		@comment.update content: params[:content]
+		authorize @comment
 
+		if @comment.valid?
+			redirect_to action: 'show', controller: 'songs', instrument_id: @instrument.slug, id: @song.slug
+		else
+			render 'edit'
+		end
 	end
 
 	protected

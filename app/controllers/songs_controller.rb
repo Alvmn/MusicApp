@@ -11,7 +11,7 @@ class SongsController < ApplicationController
 		@song = @instrument.songs.friendly.find params[:id]
 		@midis = @song.midis
 		@videos = @song.videos
-		@comments = @song.comments
+		@comments = @song.comments.order(created_at: :desc).limit(10)
 	end
 
 	def found_songs

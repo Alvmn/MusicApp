@@ -117,6 +117,10 @@ input {
 	min-height: 100px;
 	min-width: 100px;
 }
+.instrument_img:hover{
+	-webkit-filter: drop-shadow(10px 10px 20px rgba(255,255,255,1));
+	filter: url(shadow.svg#drop-shadow);
+}
 
 
 label {
@@ -149,6 +153,7 @@ a.home:hover {
 	color: 				red;
 	font-weight: 		bold;
 	font-size: 			50px;
+	margin-top: 		90px;
 } 
 /*#flash_notice {
 	color: 				red;

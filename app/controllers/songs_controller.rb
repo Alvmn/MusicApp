@@ -11,7 +11,7 @@ class SongsController < ApplicationController
 		@song = @instrument.songs.find params[:id]
 		@midis = @song.midis
 		@videos = @song.videos
-		@comments = Comment.all
+		@comments = @song.comments
 	end
 
 	def found_songs

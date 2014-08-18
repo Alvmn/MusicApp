@@ -42,3 +42,4 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem "rolify"
 gem 'pundit'
 gem 'pry'
+gem 'friendly_id', '~> 5.0.0'

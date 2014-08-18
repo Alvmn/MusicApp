@@ -22,8 +22,9 @@
 	</div>	
 	<div class="row">
 		<div class="small-2 small-offset-1 columns">
-
+		<% if current_user && current_user.has_role?(:admin) %>
 			<%= button_to('Add instrument', new_instrument_path, method: :get) %>
+		<% end %>
 		</div>	
 	</div>			
 </div>	

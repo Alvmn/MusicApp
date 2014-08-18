@@ -113,6 +113,11 @@ input {
 	/*padding-left: 700px;*/
 	border-radius: 		10px;
 }
+.instrument_img{
+	min-height: 100px;
+	min-width: 100px;
+}
+
 
 label {
 	color: 				black;
@@ -173,5 +178,10 @@ a.home:hover {
 .topbarlogo{
 	float: right;
 	padding-right: 10px;
+
+}
+.home {
+	background-image: url(/images/home.png);
+    
 
 }

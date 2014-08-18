@@ -11,5 +11,8 @@ class CreateFriendlyIdSlugs < ActiveRecord::Migration
     add_index :friendly_id_slugs, [:slug, :sluggable_type]
     add_index :friendly_id_slugs, [:slug, :sluggable_type, :scope], :unique => true
     add_index :friendly_id_slugs, :sluggable_type
+
+    add_column :songs, :slug, :string, unique: true
+    add_column :instruments, :slug, :string, unique: true
   end
 end

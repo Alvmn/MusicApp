@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140818132435) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "slug"
   end
 
   create_table "midis", force: true do |t|
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(version: 20140818132435) do
     t.string  "image"
     t.integer "instrument_id", limit: 255
     t.string  "songwriter"
+    t.string  "slug"
   end
 
   create_table "songs_tags", force: true do |t|

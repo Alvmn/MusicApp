@@ -7,8 +7,8 @@ class SongsController < ApplicationController
 	end
 
 	def show
-		@instrument = Instrument.find params[:instrument_id]
-		@song = @instrument.songs.find params[:id]
+		@instrument = Instrument.friendly.find params[:instrument_id]
+		@song = @instrument.songs.friendly.find params[:id]
 		@midis = @song.midis
 		@videos = @song.videos
 		@comments = @song.comments
@@ -49,12 +49,12 @@ class SongsController < ApplicationController
 	end
 
 	def edit
-      @song = @instrument.songs.find params[:id]
+      @song = @instrument.songs.friendly.find params[:id]
       authorize @song
   	end
 
   	def update
-      song = @instrument.songs.find params[:id]
+      song = @instrument.songs.friendly.find params[:id]
    	  song.update title: params[:song_title]
    	  authorize @song
    	  # youtube_videos = song.videos.update
@@ -66,7 +66,7 @@ class SongsController < ApplicationController
   	end
 
 	def destroy
-	    @song = @instrument.songs.find params[:id]
+	    @song = @instrument.songs.friendly.find params[:id]
 	    @youtube_videos = @song.videos
 	    @midis = @song.midis
 	    authorize @song
@@ -84,7 +84,7 @@ class SongsController < ApplicationController
 	protected
 
 	def set_instrument
-	  @instrument = Instrument.find params[:instrument_id]
+	  @instrument = Instrument.friendly.find params[:instrument_id]
 	end
 
 	def authenticate!

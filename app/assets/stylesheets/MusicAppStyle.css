@@ -77,8 +77,9 @@ textarea {
 textarea[rows]{
 	height: 			50px;
 }
-ul {
+li {
 	/*padding-left: 700px;*/
+	margin-left: 0px;
 }
 
 a{
@@ -98,9 +99,9 @@ button{
 }
 
 input {
-	background-color: pink; 
+	background-color: white; 
 	border-radius: 		10px;
-	margin-top: 		20px;
+	margin-top: 		50px;
 	/*margin-left: 700px;*/
 
 }
@@ -116,6 +117,7 @@ input {
 label {
 	color: 				black;
 	font-weight: 		bold;
+	margin-left: 		10px;
 }
 
 
@@ -124,6 +126,12 @@ a.login{
 }
 
 a.login:hover {
+	color: 				#17A9A4;
+}
+a.home {
+	color: 				#D0EEED;
+}
+a.home:hover {
 	color: 				#17A9A4;
 }
 

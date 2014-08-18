@@ -13,4 +13,7 @@ class Song < ActiveRecord::Base
 
 	validates :title, presence: true
     validates :title, uniqueness: true
+
+    extend FriendlyId
+  	friendly_id :title, use: :slugged
 end

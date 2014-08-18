@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = @song.comments.create(content: params[:content])
+		@comment.user = current_user
 		authorize @comment
 		if @comment.save
 			redirect_to action:'show', controller:'songs', id: @song.slug

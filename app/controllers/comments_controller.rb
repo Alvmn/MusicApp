@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	before_filter :authenticate_user!, except: [:index, :show]
 	before_filter :set_song
 
 	def new
@@ -10,7 +11,7 @@ class CommentsController < ApplicationController
 		@comment = @song.comments.create(content: params[:content])
 		authorize @comment
 		if @comment.save
-			redirect_to action:'show', controller:'songs', id: @song.id
+			redirect_to action:'show', controller:'songs', id: @song.slug
 		else
 			render 'new'
 		end
@@ -21,9 +22,9 @@ class CommentsController < ApplicationController
 		authorize @comment
 		if @comment.destroy
 			flash[:notice]
-			redirect_to action:'show', controller:'songs',  instrument_id: params[:instrument_id], id: @song.id
+			redirect_to action:'show', controller:'songs',  instrument_id: params[:instrument_id], id: @song.slug
 		else
-			redirect_to action:'show', controller:'songs', instrument_id: @instrument.id, id: @song.id
+			redirect_to action:'show', controller:'songs', instrument_id: @instrument.slug, id: @song.slug
 		end
 	end
 
@@ -39,6 +40,6 @@ class CommentsController < ApplicationController
 	protected
 
 	def set_song
-		@song = Song.find(params[:song_id] || params[:id])
+		@song = Song.friendly.find params[:song_id]
 	end
 end

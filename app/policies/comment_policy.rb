@@ -23,7 +23,7 @@ class CommentPolicy
   end
 
   def update?
-    !@user.blank?
+    !@user.blank? && @record.user == @user
   end
 
   def edit?

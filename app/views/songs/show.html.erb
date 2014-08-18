@@ -31,6 +31,9 @@
 <%= button_to('Comment', new_instrument_song_comment_path(@instrument.slug, @song.slug), method: :get) %>
 <ul>
 <% @comments.each do |comment| %>
-	<li><%= comment.content %> <%= link_to 'Edit', edit_instrument_song_comment_path(@instrument.slug, @song.slug, comment.id) %> <%= link_to 'Delete', instrument_song_comment_path(@instrument.slug, @song.slug, comment.id), method: :delete %></li>
+	<li><%= comment.content %> 
+	<% if comment.user == current_user %>
+	<%= link_to 'Edit', edit_instrument_song_comment_path(@instrument.slug, @song.slug, comment.id) %> <%= link_to 'Delete', instrument_song_comment_path(@instrument.slug, @song.slug, comment.id), method: :delete %></li>
+	<% end %>
 <% end %>
 </ul>

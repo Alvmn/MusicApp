@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-	before_action :set_song
+	before_filter :set_song
 
 	def new
 		@comment = @song.comments.new
@@ -21,9 +21,9 @@ class CommentsController < ApplicationController
 		authorize @comment
 		if @comment.destroy
 			flash[:notice]
-			redirect_to action:'show', controller:'songs', song_id: @song.id
+			redirect_to action:'show', controller:'songs',  instrument_id: params[:instrument_id], id: @song.id
 		else
-			redirect_to action:'show', controller:'songs', song_id: @song.id
+			redirect_to action:'show', controller:'songs', instrument_id: @instrument.id, id: @song.id
 		end
 	end
 
@@ -39,6 +39,6 @@ class CommentsController < ApplicationController
 	protected
 
 	def set_song
-		@song = Song.find params[:song_id]
+		@song = Song.find(params[:song_id] || params[:id])
 	end
 end

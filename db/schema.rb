@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20140818132435) do
   end
 
   create_table "comments", force: true do |t|
-    t.integer  "user_id"
     t.text     "content"
     t.integer  "song_id"
     t.datetime "created_at"

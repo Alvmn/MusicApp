@@ -25,6 +25,7 @@
 		<% if current_user && current_user.has_role?(:admin) %>
 			<%= button_to('Add instrument', new_instrument_path, method: :get) %>
 		<% end %>
+		
 		</div>	
 	</div>			
 </div>	

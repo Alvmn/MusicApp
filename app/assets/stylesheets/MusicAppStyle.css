@@ -86,6 +86,17 @@ body {
 	overflow: 			auto;
 	overflow-x: 		hidden;
 }
+.body4{
+	width:45%;
+	height: 600px;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius:		10px;
+	margin-left: 		20px;
+	margin-top: 		50px;
+	padding-bottom:		30px;
+	overflow: 			auto;
+	overflow-x: 		hidden;
+}
 .try{
 	width: 				60%;
 	max-height:			80%;

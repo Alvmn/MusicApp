@@ -10,6 +10,7 @@
 <body>
   <!-- <div class="body"> -->
     <div id="container">
+    <div class="topbar">
       <div id="user_nav">
         <% if user_signed_in? %>
           Logged in as <strong><%= current_user.email %></strong>.
@@ -19,6 +20,9 @@
           <%= link_to "Sign up", new_user_registration_path, html_options = {class: "login"} %> |
           <%= link_to "Login", new_user_session_path, class: "login" %>
         <% end %>
+        <span> MusicApp&reg;, developed with love and patience </span>
+
+      </div>
       </div>
 
       <% flash.each do |name, msg| %>
@@ -26,12 +30,10 @@
       <% end %>
 
       <%= yield %>
-    
+  
    </div> 
   <!-- </div> 
  -->
- <div class="foot">
- <p> MusicApp&reg;, developed with love and patience </p>
- </div>
+ 
 </body>
 </html>

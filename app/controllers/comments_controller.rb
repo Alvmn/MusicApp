@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@comment = @song.comments.new(content: params[:comment_content])
+		@comment = @song.comments.create(content: params[:content])
 		if @comment.save
-			redirect_to action: 'show', controller:'comments', comment_id: @comment.id
+			redirect_to action:'show', controller:'songs', id: @song.id
 		else
 			render 'new'
 		end

@@ -7,6 +7,7 @@ class SongsController < ApplicationController
 	end
 
 	def show
+		@instrument = Instrument.find params[:instrument_id]
 		@song = @instrument.songs.find params[:id]
 		@midis = @song.midis
 		@videos = @song.videos

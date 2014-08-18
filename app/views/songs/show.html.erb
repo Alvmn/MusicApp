@@ -34,7 +34,7 @@
 <%= button_to('Comment', new_instrument_song_comment_path(@instrument.id, @song.id), method: :get) %>
 <ul>
 <% @comments.each do |comment| %>
-<li><%= comment.content %></li>
+	<li><%= comment.content %></li>
 <% end %>
 </ul>
 </body>

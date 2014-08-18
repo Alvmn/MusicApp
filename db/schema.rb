@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140817134620) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
+    t.integer  "song_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

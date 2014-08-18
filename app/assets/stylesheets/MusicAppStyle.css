@@ -15,7 +15,7 @@ h2{
 h3 {
 	margin-top: 	50px;
 }
-img {
+.sheet {
 	width: 			200px;
 	height: 		300px;
 	margin: 		0px;
@@ -170,7 +170,7 @@ a.home:hover {
 
 }
 
-span{
+.topbarlogo{
 	float: right;
 	padding-right: 10px;
 

@@ -11,7 +11,7 @@ class SongsController < ApplicationController
 		@song = @instrument.songs.friendly.find params[:id]
 		@midis = @song.midis
 		@videos = @song.videos
-		@comments = @song.comments
+		@comments = @song.comments.order(created_at: :desc).limit(10)
 	end
 
 	def found_songs
@@ -54,11 +54,11 @@ class SongsController < ApplicationController
   	end
 
   	def update
-      song = @instrument.songs.friendly.find params[:id]
-   	  song.update title: params[:song_title]
+      @song = @instrument.songs.friendly.find params[:id]
+   	  @song.update title: params[:song_title]
    	  authorize @song
    	  # youtube_videos = song.videos.update
-	   if song.valid?
+	   if @song.valid?
 	   	  redirect_to action: 'index', controller: 'songs'
 	   else
 	      render 'edit'

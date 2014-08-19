@@ -134,34 +134,34 @@ input {
 
 }
 #song_title{
-	width: 			500px;
-	margin-left: 	20px;
+	width: 			90%;
+	margin-left: 	4%;
 
 }
 
 #songwriter {
-	width:			 500px;
-	margin-left: 	20px;
+	width:			 90%;
+	margin-left: 	4%;
 }
 
 #user_email{
-	width:			 500px;
-	margin-left: 	20px;
+	width:			 90%;
+	margin-left: 	4%;
 
 }
 #user_password{
-	width:			 500px;
-	margin-left: 	20px;
+	width:			 90%;
+	margin-left: 	4%;
 }
 
 #user_password_confirmation{
-	width:			 500px;
-	margin-left: 	20px;
+	width:			 90%;
+	margin-left: 	4%;
 }
 
 #user_current_password{
-	width:			 500px;
-	margin-left: 	20px;
+	width:			 90%;
+	margin-left: 	4%;
 }
 
 #instrument_name {
@@ -173,8 +173,10 @@ input {
 	border-radius: 		10px;
 }
 .instrument_img{
-	min-height: 100px;
-	min-width: 100px;
+	min-height: 150px;
+	min-width: 150px;
+	-webkit-filter: drop-shadow(5px 5px 20px rgba(0,0,0,1));
+	filter: url(shadow.svg#drop-shadow);
 }
 .instrument_img:hover{
 	-webkit-filter: drop-shadow(10px 10px 20px rgba(255,255,255,1));

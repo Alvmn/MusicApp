@@ -18,14 +18,16 @@
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "login" %> |
            <%= link_to'Home', root_path, method: :get, class: 'home' %>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path, html_options = {class: "login"} %> |
-          <%= link_to "Login", new_user_session_path, class: "login" %> |
-           <%= link_to'Home', root_path, method: :get, class: 'home' %>
+        <%= link_to'Home', root_path, method: :get, class: 'home' %> |
+          <%= link_to "Register", new_user_registration_path, html_options = {class: "login"} %> |
+          <%= link_to "Login", new_user_session_path, class: "login" %> 
+           
         <% end %>
 
-        <span class="topbarlogo"> MusicApp&reg;, developed with love and patience </span>
-
+        
       </div>
+      <span class="topbarlogo"> MusicApp&reg;, developed with love and patience </span>
+
       </div>
 
       <% flash.each do |name, msg| %>

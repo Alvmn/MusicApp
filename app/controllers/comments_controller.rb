@@ -41,11 +41,7 @@ class CommentsController < ApplicationController
     
 
     if @comment.valid?
-<<<<<<< HEAD
-      redirect_to action: 'show', controller: 'songs', instrument_id: @instrument.slug, id: @song.slug
-=======
       redirect_to action: 'show', controller: 'songs', instrument_id: params[:instrument_id], id: @song.slug
->>>>>>> valid_images
     else
       render 'edit'
     end

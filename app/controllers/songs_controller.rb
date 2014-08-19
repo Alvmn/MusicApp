@@ -32,12 +32,13 @@ class SongsController < ApplicationController
 	end
 
 	def create
-		@song = @instrument.songs.new(title: params[:song_title]) 
+		@song = @instrument.songs.create songs_params
+		# .new(title: params[:song_title]) 
 		authorize @song
 		if @song.save
-			categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
-			youtube_link = @song.videos.create url: params[:youtube_link]
-			midi_link = @song.midis.create url: params[:midi_link]
+			# categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
+			# youtube_link = @song.videos.create url: params[:youtube_link]
+			# midi_link = @song.midis.create url: params[:midi_link]
 			flash[:alert] = "Song succesfully created!"
 			redirect_to action: 'index', controller: 'songs'
 		else
@@ -125,5 +126,8 @@ class SongsController < ApplicationController
 		@song.tags << tag1 if tag1
 		@song.tags << tag2 if tag2
 		@song.tags << tag3 if tag3
+	end
+	def songs_params
+		params.require(:song).permit(:title, :categories, :youtube_link, :music_sheets, :tags, :songwriter)
 	end
 end

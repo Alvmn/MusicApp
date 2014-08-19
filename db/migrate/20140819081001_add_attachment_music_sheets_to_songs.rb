@@ -6,6 +6,6 @@ class AddAttachmentMusicSheetsToSongs < ActiveRecord::Migration
   end
 
   def self.down
-    remove_attachment :songs, :music_sheets
+      remove_attachment :songs, :music_sheets
   end
 end

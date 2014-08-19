@@ -14,9 +14,10 @@
       <div id="user_nav">
         <% if user_signed_in? %>
           Logged in as <strong><%= current_user.email %></strong>.
+          <%= link_to'Home', root_path, method: :get, class: 'home' %> |
           <%= link_to 'Edit profile', edit_user_registration_path, html_options = {class: "login"} %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "login" %> |
-           <%= link_to'Home', root_path, method: :get, class: 'home' %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "login" %> 
+           
         <% else %>
         <%= link_to'Home', root_path, method: :get, class: 'home' %> |
           <%= link_to "Register", new_user_registration_path, html_options = {class: "login"} %> |

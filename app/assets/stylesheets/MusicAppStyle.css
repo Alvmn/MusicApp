@@ -76,8 +76,8 @@ body {
 }
 
 .body3{
-	width: 42%;
-	height: 600px;
+	width: 				42%;
+	height: 			600px;
 	background-color: rgba(255, 255, 255, 0.5);
 	border-radius:		10px;
 	margin-left: 		20px;
@@ -87,8 +87,8 @@ body {
 	overflow-x: 		hidden;
 }
 .body4{
-	width:45%;
-	height: 600px;
+	width:				45%;
+	height: 			600px;
 	background-color: rgba(255, 255, 255, 0.5);
 	border-radius:		10px;
 	margin-left: 		20px;
@@ -96,6 +96,21 @@ body {
 	padding-bottom:		30px;
 	overflow: 			auto;
 	overflow-x: 		hidden;
+}
+.body5{
+	width:				40%;
+	height: 			600px;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius:		10px;
+	margin-left: 		20px;
+	margin-top: 		50px;
+	padding-bottom:		30px;
+	overflow: 			auto;
+	overflow-x: 		hidden;
+
+}
+.found_songs{
+	margin-top: 10%;
 }
 .try{
 	width: 				60%;
@@ -252,4 +267,8 @@ a.home:hover {
 	background-image: url(/images/home.png);
     
 
+}
+.logo {
+	width: 30%;
+	margin-top: 10%;
 }

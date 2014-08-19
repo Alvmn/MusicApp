@@ -27,7 +27,7 @@ class InstrumentsController < ApplicationController
 	def destroy
 		@instrument.destroy
 				redirect_to 'index'
-	end	
+	end
 	protected
 
 	def set_instrument

@@ -133,16 +133,8 @@ a{
 button{
 	margin-top: 		80px;
 	border-radius: 		10px;
-	background: #f1e767; /* Old browsers */
-	background: -moz-linear-gradient(top, #f1e767 0%, #feb645 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1e767), color-stop(100%,#feb645)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #f1e767 0%,#feb645 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #f1e767 0%,#feb645 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #f1e767 0%,#feb645 100%); /* IE10+ */
-	background: linear-gradient(to bottom, #f1e767 0%,#feb645 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#feb645',GradientType=0 ); /* IE6-9 */
+	background-color: 	#D0EEED;
 }
-
 input {
 	background-color: white; 
 	border-radius: 		10px;
@@ -151,34 +143,34 @@ input {
 
 }
 #song_title{
-	width: 			500px;
-	margin-left: 	20px;
+	width: 			90%;
+	margin-left: 	4%;
 
 }
 
 #songwriter {
-	width:			 500px;
-	margin-left: 	20px;
+	width:			 90%;
+	margin-left: 	4%;
 }
 
 #user_email{
-	width:			 500px;
-	margin-left: 	20px;
+	width:			 90%;
+	margin-left: 	4%;
 
 }
 #user_password{
-	width:			 500px;
-	margin-left: 	20px;
+	width:			 90%;
+	margin-left: 	4%;
 }
 
 #user_password_confirmation{
-	width:			 500px;
-	margin-left: 	20px;
+	width:			 90%;
+	margin-left: 	4%;
 }
 
 #user_current_password{
-	width:			 500px;
-	margin-left: 	20px;
+	width:			 90%;
+	margin-left: 	4%;
 }
 
 #instrument_name {
@@ -190,8 +182,9 @@ input {
 	border-radius: 		10px;
 }
 .instrument_img{
-	min-height: 100px;
-	min-width: 100px;
+	min-height: 120px;
+	-webkit-filter: drop-shadow(5px 5px 20px rgba(0,0,0,1));
+	filter: url(shadow.svg#drop-shadow);
 }
 .instrument_img:hover{
 	-webkit-filter: drop-shadow(10px 10px 20px rgba(255,255,255,1));
@@ -228,37 +221,40 @@ a.home:hover {
 #flash_alert{
 	color: 				red;
 	font-weight: 		bold;
-	font-size: 			50px;
-	margin-top: 		90px;
+	font-size: 			20px;
+	margin-top: 		60px;
 } 
-/*#flash_notice {
+#flash_notice {
 	color: 				red;
 	font-weight:		bold;
-	font-size: 			50px;*/
+	font-size: 			20px;
 
 }
 
 #user_nav {
 	/*no se si dar estilo o no
 	a la barra de navegación*/
+	float: right;
+	padding-right: 10px;
 }
 
 
 .topbar {
-	z-index: 10;
-	color: white !important;
-	width: 100%;
-	height: 40px;
-	top: 0;
-	position: fixed;
-	background: #7B8282; /* Old browsers */
+	z-index: 		10;
+	color: 			white !important;
+	width: 			100%;
+	height: 		40px;
+	top: 			0;
+	position: 		fixed;
+	background: 	#7B8282; 
 	
 
 }
 
 .topbarlogo{
-	float: right;
-	padding-right: 10px;
+	float: 				left;
+	padding-left: 		10px;
+	
 
 }
 .home {

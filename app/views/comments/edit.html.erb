@@ -1,4 +1,4 @@
-<%= form_tag(controller: "comments", action: "create", method: "post") do %>
+<%= form_tag(controller: "comments", action: "update", method: "put") do %>
 	<%= text_area_tag(:content, @comment.content, placeholder:"What do you think?...", size: "24x12") %>
-	<%= submit_tag('Submit') %>
+	<%= submit_tag('Submit', method: :put) %>
 <% end %>

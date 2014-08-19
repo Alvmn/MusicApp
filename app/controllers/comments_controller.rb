@@ -12,9 +12,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     authorize @comment
     if @comment.save
-	  redirect_to action:'show', controller:'songs', id: @song.slug
+      redirect_to action:'show', controller:'songs', id: @song.slug
     else
-	  render 'new'
+      render 'new'
     end
   end
 
@@ -22,10 +22,10 @@ class CommentsController < ApplicationController
     @comment = @song.comments.find params[:id]
     authorize @comment
     if @comment.destroy
-	  flash[:notice]
-	  redirect_to action:'show', controller:'songs', instrument_id: params[:instrument_id], id: @song.slug
+      flash[:notice]
+      redirect_to action:'show', controller:'songs',  instrument_id: params[:instrument_id], id: @song.slug
     else
-	  redirect_to action:'show', controller:'songs', instrument_id: @instrument.slug, id: @song.slug
+      redirect_to action:'show', controller:'songs', instrument_id: @instrument.slug, id: @song.slug
     end
   end
 
@@ -40,16 +40,15 @@ class CommentsController < ApplicationController
     authorize @comment
 
     if @comment.valid?
-	  redirect_to action: 'show', controller: 'songs', instrument_id: params[:instrument_id], id: @song.slug
+      redirect_to action: 'show', controller: 'songs', instrument_id: @instrument.slug, id: @song.slug
     else
-	  render 'edit'
+      render 'edit'
     end
   end
 
-protected
+  protected
 
   def set_song
     @song = Song.friendly.find params[:song_id]
   end
-
 end

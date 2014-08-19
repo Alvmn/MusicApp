@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 		authorize @comment
 		if @comment.destroy
 			flash[:notice]
-			redirect_to action:'show', controller:'songs',  instrument_id: params[:instrument_id], id: @song.slug
+			redirect_to action:'show', controller:'songs', instrument_id: params[:instrument_id], id: @song.slug
 		else
 			redirect_to action:'show', controller:'songs', instrument_id: @instrument.slug, id: @song.slug
 		end
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
 		authorize @comment
 
 		if @comment.valid?
-			redirect_to action: 'show', controller: 'songs', instrument_id: @instrument.slug, id: @song.slug
+			redirect_to action: 'show', controller: 'songs', instrument_id: params[:instrument_id], id: @song.slug
 		else
 			render 'edit'
 		end

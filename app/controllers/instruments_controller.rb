@@ -28,6 +28,7 @@ class InstrumentsController < ApplicationController
 		@instrument.destroy
 		redirect_to controller: :instruments, action:'index'
 	end	
+
 	protected
 
 	def set_instrument

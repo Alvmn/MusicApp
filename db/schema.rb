@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818132435) do
+ActiveRecord::Schema.define(version: 20140819081001) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -73,11 +73,15 @@ ActiveRecord::Schema.define(version: 20140818132435) do
   add_index "roles", ["name"], name: "index_roles_on_name"
 
   create_table "songs", force: true do |t|
-    t.string  "title"
-    t.string  "image"
-    t.integer "instrument_id", limit: 255
-    t.string  "songwriter"
-    t.string  "slug"
+    t.string   "title"
+    t.string   "image"
+    t.integer  "instrument_id",             limit: 255
+    t.string   "songwriter"
+    t.string   "slug"
+    t.string   "music_sheets_file_name"
+    t.string   "music_sheets_content_type"
+    t.integer  "music_sheets_file_size"
+    t.datetime "music_sheets_updated_at"
   end
 
   create_table "songs_tags", force: true do |t|

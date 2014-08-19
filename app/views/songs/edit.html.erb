@@ -9,7 +9,22 @@
 	<%= check_box(:song_tag3, "Begginer", {}, 'Begginer', "no") %> <%= label_tag("Begginer") %>
 	<%= submit_tag("Submit") %>
 	<h1> Video & URL </h1>
+
+	<% @videos.each do |video| %>
+		<li><span>
+			
+				<%= link_to(" Delete", instrument_song_path(@instrument, @song, video), method: "delete", data: {confirm: "Are you sure?"}) %> 
+			
+		</span></li>
+	<% end %>
 	<%= text_area_tag(:youtube_link,"", placeholder:"Change youtube link...") %>
+	<% @midis.each do |midi| %>
+		<li><span>
+			
+				<%= link_to(" Delete", instrument_song_path(@instrument, @song, midi), method: "delete", data: {confirm: "Are you sure?"}) %> 
+		
+		</span></li>
+	<% end %>
 	<%= text_area_tag(:midi_link,"", placeholder:"Change midi link...") %>
 <% end %>
 

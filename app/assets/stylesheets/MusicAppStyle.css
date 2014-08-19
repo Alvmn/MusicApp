@@ -173,8 +173,7 @@ input {
 	border-radius: 		10px;
 }
 .instrument_img{
-	min-height: 150px;
-	min-width: 150px;
+	min-height: 120px;
 	-webkit-filter: drop-shadow(5px 5px 20px rgba(0,0,0,1));
 	filter: url(shadow.svg#drop-shadow);
 }

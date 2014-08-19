@@ -50,15 +50,27 @@ class SongsController < ApplicationController
 
 	def edit
       @song = @instrument.songs.friendly.find params[:id]
+      @videos = @song.videos
+      @midis = @song.midis
+      @categories = @song.categories
+      # AÑADIR POSIBILIDAD DE AÑADIR O QUITAR TAGS
+
+      # METER ALGO DE ROLES DENTRO
+
+      # Para cuando haya partitura
+      # @sheet = @song.music_sheets
       authorize @song
   	end
 
   	def update
       song = @instrument.songs.friendly.find params[:id]
    	  song.update title: params[:song_title]
+   	  song.categories.update name: params[:song_category]	
    	  authorize @song
    	  # youtube_videos = song.videos.update
 	   if song.valid?
+	   	  song.videos.create url: params[:youtube_link]	
+	   	  song.midis.create url: params[:midi_link]	
 	   	  redirect_to action: 'index', controller: 'songs'
 	   else
 	      render 'edit'
@@ -74,6 +86,13 @@ class SongsController < ApplicationController
 	    if @song.destroy && @youtube_videos.destroy && @midis.destroy
 	      flash[:alert] = "Song succesfully deleted!"
 	      redirect_to action: 'index', controller: 'songs'
+	    # ESTOS DOS SON PARA EL DESTROY DEL EDIT
+	    elsif @youtube_videos.destroy 
+	      flash[:alert] = "Video succesfully deleted!"
+	      redirect_to action: 'edit', controller: 'songs'
+	    elsif @midis.destroy
+	      flash[:alert] = "MIDI succesfully deleted!"
+	      redirect_to action: 'edit', controller: 'songs'
 	    else
 	      flash[:alert] = "Song NOT deleted!"
 	      redirect_to action: 'index', controller: 'songs'

@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+
   before_filter :authenticate_user!, except: [:index, :show, :found_songs] #autenticate! es una función creada por nosotros, más abajo
   before_action :set_instrument
   
@@ -97,7 +98,7 @@ class SongsController < ApplicationController
     if @song.destroy && @youtube_videos.destroy && @midis.destroy
       flash[:alert] = "Song succesfully deleted!"
       redirect_to action: 'index', controller: 'songs'
-# ESTOS DOS SON PARA EL DESTROY DEL EDIT
+    # ESTOS DOS SON PARA EL DESTROY DEL EDIT
     elsif @youtube_videos.destroy 
       flash[:alert] = "Video succesfully deleted!"
       redirect_to action: 'edit', controller: 'songs'
@@ -164,7 +165,7 @@ protected
 
   def music_sheet_assignment
     music_sheet = params[:music_sheet]
-    @song.music_sheets = music_sheet if music_sheet
+     @song.music_sheets_file_name = music_sheet if music_sheet
   end
-  
+
 end

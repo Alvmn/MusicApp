@@ -1,0 +1,13 @@
+Esto va en el body
+
+<object width="160" 
+height="40" > 
+<param name="movie" value="clockdig.swf" > 
+<param name="play" value="true"> 
+<param name="loop" value="true" > 
+<param name="quality" value="high" >
+<param name="align" value="left" >
+<embed src="../flash/clockdig.swf" width="160" height="40" play="true" 
+loop="true" quality="high" > 
+</embed> 
+</object>

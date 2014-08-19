@@ -16,12 +16,21 @@ h3 {
 	margin-top: 	50px;
 }
 .sheet {
+	-webkit-transition: all .5s ease-in;
 	width: 			200px;
 	height: 		300px;
 	margin: 		0px;
 	margin-top: 	50px;
 	margin-left: 	40px;
 
+}
+
+.sheet_clicked {
+	-webkit-transition: all .5s ease-in-out;
+	width: 100%;
+	height: 100%;
+	z-index: 20;
+	display: inline-block;
 }
 
 iframe {

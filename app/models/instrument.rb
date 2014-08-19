@@ -1,5 +1,4 @@
 class Instrument < ActiveRecord::Base
-	
   extend FriendlyId
   has_many :songs, :dependent => :destroy
 	

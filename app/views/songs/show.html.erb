@@ -1,3 +1,5 @@
+	<script src='/assets/jquery.transit.min.js'></script>
+	<script src="/assets/toggle.js"></script>
 	<div class="body">
 		<div class="row">
 	          <div class="small-12 small-offset-1 columns">
@@ -5,9 +7,14 @@
 			  </div>
 		</div>	  	
 
+		
+				<div id="music_sheet" class='sheet'>
+					<%= image_tag((@song.title+".jpg")) %>
+				</div>
+		
 		<div class="row">
 			<div class="small-3 small-offset-1 columns">
-				<%= image_tag((@song.title+".jpg"), class: 'sheet') %>
+				<%= image_tag(@song.music_sheets.url, class: 'sheet') %>
 			</div>
 			
 			<% @videos.each do |video| %>
@@ -26,6 +33,7 @@
 
 	</div>	
 
+<iframe src="https://embed.spotify.com/?uri=spotify:track:0ShZidyBdeUF00b4ontvom" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
 
 <!-- http://es.slideshare.net/txipi/las-nuevas-api-de-audio-en-html5# -->
 <%= button_to('Comment', new_instrument_song_comment_path(@instrument.slug, @song.slug), method: :get) %>

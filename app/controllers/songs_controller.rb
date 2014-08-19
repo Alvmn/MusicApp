@@ -1,11 +1,14 @@
 class SongsController < ApplicationController
 	before_filter :authenticate_user!, except: [:index, :show, :found_songs] #autenticate! es una función creada por nosotros, más abajo
-	before_action :set_instrument
+	before_action :set_instrument, except: [:testpage]
 	
 	def index
 		@songs = @instrument.songs
 	end
 
+	def testpage
+
+	end
 	def show
 		@instrument = Instrument.friendly.find params[:instrument_id]
 		@song = @instrument.songs.friendly.find params[:id]

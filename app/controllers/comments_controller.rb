@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     authorize @comment
     if @comment.destroy
       flash[:notice]
-      redirect_to action:'show', controller:'songs',  instrument_id: params[:instrument_id], id: @song.slug
+      redirect_to action:'show', controller:'songs', instrument_id: params[:instrument_id], id: @song.slug
     else
       redirect_to action:'show', controller:'songs', instrument_id: @instrument.slug, id: @song.slug
     end
@@ -36,11 +36,16 @@ class CommentsController < ApplicationController
 
   def update
     @comment = @song.comments.find params[:id]
-    @comment.update content: params[:content]
     authorize @comment
+    @comment.update content: params[:content]
+    
 
     if @comment.valid?
+<<<<<<< HEAD
       redirect_to action: 'show', controller: 'songs', instrument_id: @instrument.slug, id: @song.slug
+=======
+      redirect_to action: 'show', controller: 'songs', instrument_id: params[:instrument_id], id: @song.slug
+>>>>>>> valid_images
     else
       render 'edit'
     end

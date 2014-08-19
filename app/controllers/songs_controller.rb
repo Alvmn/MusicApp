@@ -1,56 +1,8 @@
 class SongsController < ApplicationController
-	before_filter :authenticate_user!, except: [:index, :show, :found_songs] #autenticate! es una función creada por nosotros, más abajo
-	before_action :set_instrument, except: [:testpage]
-	
-	def index
-		@songs = @instrument.songs
-	end
 
-	def testpage
+  before_filter :authenticate_user!, except: [:index, :show, :found_songs] #autenticate! es una función creada por nosotros, más abajo
+  before_action :set_instrument
 
-	end
-	def show
-		@instrument = Instrument.friendly.find params[:instrument_id]
-		@song = @instrument.songs.friendly.find params[:id]
-		@midis = @song.midis
-		@videos = @song.videos
-		@comments = @song.comments.order(created_at: :desc).limit(10)
-	end
-
-	def found_songs
-		@songs = @instrument.songs.where "title LIKE ?", "%#{params[:title]}%"# Mejorar para buscar canciones 
-		unless @songs.empty? 
-		#título parecido al introducido
-			render 'found_songs'
-		else 
-		flash[:alert] = 'Ooohps! We could not find your song, did you write it right?'
-		render 'index'
-		end	
-	end
-
-	def new
-		@categories = Category.all
-		@song = @instrument.songs.new
-		authorize @song
-	end
-
-	def create
-		@song = @instrument.songs.new(title: params[:song_title]) 
-		authorize @song
-		if @song.save
-			categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
-			youtube_link = @song.videos.create url: params[:youtube_link]
-			midi_link = @song.midis.create url: params[:midi_link]
-			flash[:alert] = "Song succesfully created!"
-			redirect_to action: 'index', controller: 'songs'
-		else
-			flash[:alert] = "Sorry, try again"
-			@categories = Category.all
-			render 'new'
-		end
-
-	end
- 
   def index
     @songs = @instrument.songs
   end
@@ -146,7 +98,7 @@ class SongsController < ApplicationController
     if @song.destroy && @youtube_videos.destroy && @midis.destroy
       flash[:alert] = "Song succesfully deleted!"
       redirect_to action: 'index', controller: 'songs'
-# ESTOS DOS SON PARA EL DESTROY DEL EDIT
+    # ESTOS DOS SON PARA EL DESTROY DEL EDIT
     elsif @youtube_videos.destroy 
       flash[:alert] = "Video succesfully deleted!"
       redirect_to action: 'edit', controller: 'songs'
@@ -213,7 +165,7 @@ protected
 
   def music_sheet_assignment
     music_sheet = params[:music_sheet]
-    @song.music_sheets = music_sheet if music_sheet
+     @song.music_sheets_file_name = music_sheet if music_sheet
   end
-  
+
 end

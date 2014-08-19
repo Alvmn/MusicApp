@@ -1,6 +1,6 @@
 class InstrumentsController < ApplicationController
 	before_filter :authenticate_user!, except: [:index, :show] #autenticate! es una función creada por nosotros, más abajo
-	before_action :set_instrument, only: [:show]
+	before_action :set_instrument, only: [:show, :destroy]
 
 	def index
 		@instruments = Instrument.all
@@ -24,7 +24,10 @@ class InstrumentsController < ApplicationController
 			render 'new'	
 		end	
 	end 
-
+	def destroy
+		@instrument.destroy
+				redirect_to 'index'
+	end	
 	protected
 
 	def set_instrument
@@ -34,4 +37,5 @@ class InstrumentsController < ApplicationController
 	def instrument_params
 	  params.require(:instrument).permit(:name)
 	end
+
 end

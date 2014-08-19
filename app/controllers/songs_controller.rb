@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-	before_filter :authenticate_user!, except: [:index, :show] #autenticate! es una función creada por nosotros, más abajo
+	before_filter :authenticate_user!, except: [:index, :show, :found_songs] #autenticate! es una función creada por nosotros, más abajo
 	before_action :set_instrument
 	
 	def index
@@ -11,7 +11,7 @@ class SongsController < ApplicationController
 		@song = @instrument.songs.friendly.find params[:id]
 		@midis = @song.midis
 		@videos = @song.videos
-		@comments = @song.comments
+		@comments = @song.comments.order(created_at: :desc).limit(10)
 	end
 
 	def found_songs
@@ -71,6 +71,11 @@ class SongsController < ApplicationController
 	   if song.valid?
 	   	  song.videos.create url: params[:youtube_link]	
 	   	  song.midis.create url: params[:midi_link]	
+      @song = @instrument.songs.friendly.find params[:id]
+   	  @song.update title: params[:song_title]
+   	  authorize @song
+   	  # youtube_videos = song.videos.update
+	   if @song.valid?
 	   	  redirect_to action: 'index', controller: 'songs'
 	   else
 	      render 'edit'

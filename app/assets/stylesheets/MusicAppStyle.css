@@ -188,23 +188,23 @@ input {
 }
 
 #user_email{
-	width:			 	200%;
-	margin-left: 		4%;
+	/*width:			 	200%;
+	margin-left: 		4%;*/
 
 }
 #user_password{
-	width:			 	150%;
-	margin-left: 		4%;
+	/*width:			 	150%;
+	margin-left: 		4%;*/
 }
 
 #user_password_confirmation{
-	width:			 	150%;
-	margin-left: 		4%;
-}
+	width:			 	100%;
+	/*margin-left: 		4%;
+*/}
 
 #user_current_password{
-	width:			 	90%;
-	margin-left: 		4%;
+	/*width:			 	90%;
+	margin-left: 		4%;*/
 }
 
 #user_email.sign{
@@ -216,7 +216,7 @@ input {
 }
 
 #user_password_confirmation{
-	width: 				50%;
+	width: 				100%;
 }
 
 #instrument_name {
@@ -331,7 +331,9 @@ img.img_home {
 span {
 	color: #D0EEED;
 }
-#engageView{
-	margin: 0px;
-}
+.spotify{
+	/*margin-left: 50%;
+	margin-top: -45%;
+*/
+
 }

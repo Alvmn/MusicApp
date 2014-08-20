@@ -3,6 +3,11 @@
 
 <div>
 	<div id="music_sheet" class='sheet'>
-		<%= image_tag(@song.music_sheets.url) %>
+		<%= image_tag(@song.music_sheets.first.sheet_file) %>
+	</div>
+</div>
+<div>
+	<div id="music_sheet" class='sheet'>
+		<%= image_tag(@song.asheet.url) %>
 	</div>
 </div>

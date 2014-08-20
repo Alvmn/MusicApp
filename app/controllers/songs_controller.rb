@@ -44,7 +44,9 @@ class SongsController < ApplicationController
     
     if @song.save
   	  categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
-  	  youtube_link = @song.videos.create url: params[:youtube_link]
+  	  @song.music_sheets.create sheet_file: params[:song][:music_sheet][:sheet_file]
+      # binding.pry
+      youtube_link = @song.videos.create url: params[:youtube_link]
   	  midi_link = @song.midis.create url: params[:midi_link]
       music_sheet_assignment
       flash[:alert] = "Song succesfully created!"
@@ -91,6 +93,7 @@ class SongsController < ApplicationController
       else
         song.midis.create url: params[:midi_link]
       end 
+      music_sheet_assignment # AÑADE OTRA PARTITURA
       @song = @instrument.songs.friendly.find params[:id]
       authorize @song
   # youtube_videos = song.videos.update
@@ -151,7 +154,7 @@ protected
 
   def song_params
     params.require(:song).permit(
-    	:title, :youtube_link,:music_sheets, :songwriter, :tag_ids, tags_attributes: [:name, :id])
+    	:title, :youtube_link,:music_sheets,:asheet, :songwriter, :tag_ids, tags_attributes: [:name, :id])
   end
 
   def categories_assignment
@@ -170,7 +173,12 @@ protected
   end
 
   def music_sheet_assignment
+
     music_sheet = params[:song][:music_sheets]
     @song.music_sheets = music_sheet if music_sheet
+
+    # music_sheet = params[:song][:asheet]
+    # @song.asheet = music_sheet if music_sheet
+
   end
-end
+end 

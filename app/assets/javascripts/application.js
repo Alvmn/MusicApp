@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 //= require foundation.min
-
+//= require foundation.topbar
 
 $('#modal').on('click', function(){
 	$('#loginModal').foundation('reveal', 'open');

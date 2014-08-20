@@ -2,35 +2,41 @@
 	<script src="/assets/toggle.js"></script>
 	<div class="body">
 		<div class="row">
-	          <div class="small-12 small-offset-1 columns">
+	          <div class="small-6 small-offset-1 columns">
 				<h1><%= @song.title.capitalize %> </h1> <%= link_to("Edit me!", edit_instrument_song_path(@instrument, @song)) %>
 			  </div>
+			  
 		</div>	  	
 
 		
 		<div class="row">
-			<div class="small-12 small-offset-1 columns">
-				<button><h1> <%= link_to "Partituras", music_sheets_path(@instrument, @song) %> </h1></button>
-			</div>
 			
-			<% @videos.each do |video| %>
+			<div class="spotify small-4 columns">
+					<iframe  src="https://embed.spotify.com/?uri=spotify:track:24UStI5AYA7g5ufFDh3LH0" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+				</div>
 			
-				<%= raw video.url %> 
+			<div class="small-6 columns">
+				 <% @videos.each do |video| %>
 			
-			<% end %>
+					<%= raw video.url %> 
 			
-		<div class="row">
+				<% end %>
+			</div>	
+
+	</div>	
+	
+	<div class="row">
+			<div class="small-4 columns"
 			<% @midis.each do |midi| %>
 				<div class="small-4 small-offset-6 columns">
 					<audio src="/songs/<%= midi.url %>" controls preload />
 				</div>	
-			<% end %>	
+			<% end %>
+			<div class="small-4 columns">
+				<button><h1> <%= link_to "Partituras", music_sheets_path(@instrument, @song) %> </h1></button>
+			</div>	
 		</div>	
 
-	</div>	
-
-
-<iframe class="spotify small-offset-2 columns" src="https://embed.spotify.com/?uri=spotify:track:24UStI5AYA7g5ufFDh3LH0" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
 
 
 <!-- http://es.slideshare.net/txipi/las-nuevas-api-de-audio-en-html5# -->

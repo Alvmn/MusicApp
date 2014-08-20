@@ -38,24 +38,19 @@ class SongsController < ApplicationController
     @song = @instrument.songs.new
     # binding.pry
     @song.assign_attributes(song_params)
-    categories_assignment
-
-    video_assignment
-    midi_assignment
-    music_sheet_assignment
-
     authorize @song
     
     if @song.save
-	# categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
-	# youtube_link = @song.videos.create url: params[:youtube_link]
-	# midi_link = @song.midis.create url: params[:midi_link]
-	  flash[:alert] = "Song succesfully created!"
-	  redirect_to action: 'index', controller: 'songs'
+  	  categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
+  	  youtube_link = @song.videos.create url: params[:youtube_link]
+  	  midi_link = @song.midis.create url: params[:midi_link]
+      music_sheet_assignment
+      flash[:alert] = "Song succesfully created!"
+  	  redirect_to action: 'index', controller: 'songs'
     else
-	  flash[:alert] = "Sorry, try again"
-	  @categories = Category.all
-	  render 'new'
+  	  flash[:alert] = "Sorry, try again"
+  	  @categories = Category.all
+  	  render 'new'
     end
   end
 
@@ -126,34 +121,19 @@ protected
 
   def categories_tags
     category = Category.find_by name: params[:song_category]
-    tag1 = Tag.find_by(name: params[:song_tag1][:Cool]) unless params[:song_tag1][:Cool] == "no"
-    tag2 = Tag.find_by(name: params[:song_tag2][:Hard]) unless params[:song_tag2][:Hard] == "no"
-    tag3 = Tag.find_by(name: params[:song_tag3][:Begginer]) unless params[:song_tag2][:Begginer] == "no"
+    # tag1 = Tag.find_by(name: params[:song_tag1][:Cool]) unless params[:song_tag1][:Cool] == "no"
+    # tag2 = Tag.find_by(name: params[:song_tag2][:Hard]) unless params[:song_tag2][:Hard] == "no"
+    # tag3 = Tag.find_by(name: params[:song_tag3][:Begginer]) unless params[:song_tag2][:Begginer] == "no"
 
     @song.categories << category if category
-    @song.tags << tag1 if tag1
-    @song.tags << tag2 if tag2
-    @song.tags << tag3 if tag3
+    # @song.tags << tag1 if tag1
+    # @song.tags << tag2 if tag2
+    # @song.tags << tag3 if tag3
   end
 
   def song_params
     params.require(:song).permit(
     	:title, :youtube_link,:music_sheets, :songwriter, :tag_ids, tags_attributes: [:name, :id])
-  end
-
-  def categories_assignment
-    category = Category.find_by name: params[:song_category]
-    @song.categories << category if category
-  end
-
-  def video_assignment
-    video = Video.find_by url: params[:youtube_link]
-    @song.videos << video if video
-  end
-
-  def midi_assignment
-    midi = Midi.find_by url: params[:midi_link]
-    @song.midis << midi if midi
   end
 
   def music_sheet_assignment

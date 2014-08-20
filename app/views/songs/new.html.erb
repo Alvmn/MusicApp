@@ -4,7 +4,7 @@
     <%= form_for([:instrument, @song], multipart: true) do |f|%>
       <%= f.text_field(:title, placeholder:"Song title...", size: "24x6") %>
       <% @categories.each do |category| %>
-        <%= f.radio_button(:categories, category.name ) %><%= f.label(category.name) %>
+        <%= radio_button_tag(:song_category, category.name ) %><%= f.label(category.name) %>
       <% end %>	
 
     <h4> Song writer </h4>	

@@ -17,12 +17,13 @@ class Song < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  has_attached_file :music_sheets,
+  has_attached_file :asheet,
   :url => "/system/:class/:attachment/:id/:style/:basename.:extension",
   :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
-  validates_attachment :music_sheets,
+  validates_attachment :asheet,
   :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
 
   accepts_nested_attributes_for :tags, allow_destroy: true
   accepts_nested_attributes_for :categories, allow_destroy: true
+  accepts_nested_attributes_for :music_sheets, allow_destroy: true
 end

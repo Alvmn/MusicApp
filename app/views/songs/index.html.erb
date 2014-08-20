@@ -2,11 +2,11 @@
   <div class="row">		
     <div class="small-8  columns">
 	  <h1><%= @instrument.name.capitalize %> songs</h1>
-		    <%= search_form_for @q do |f| %>
-			  <%= f.label :title %>
-			  <%= f.search_field :title %>
-			  <%= f.label :songwriter %>
-			  <%= f.search_field :songwriter %>
+		    <%= search_form_for [@instrument, @song, @q] do |f| %>
+			  <%= f.label :title_cont %>
+			  <%= f.search_field :title_cont %>
+			  <%= f.label :songwriter_cont %>
+			  <%= f.search_field :songwriter_cont %>
 			  <%= f.submit %>
 			<% end %>
 

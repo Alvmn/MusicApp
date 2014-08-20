@@ -31,7 +31,7 @@ class CommentPolicy
   end
 
   def destroy?
-    @user.has_role? :admin
+    @user == @record.user
   end
 
   def scope

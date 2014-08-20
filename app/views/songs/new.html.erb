@@ -1,28 +1,30 @@
+<%= @song.errors.messages %>
 <div class="body3 small-offset-3 columns">
   <h3>Song title</h3>
-    <%= form_tag(controller: "songs", action: "create", method: "post", multipart: true) do %>
-      <%= text_field_tag(:song_title,"", placeholder:"Song title...", size: "24x6") %>
+    <%= form_for([:instrument, @song], multipart: true) do |f|%>
+      <%= f.text_field(:title, placeholder:"Song title...", size: "24x6") %>
       <% @categories.each do |category| %>
-        <%= radio_button_tag(:song_category, category.name ) %><%= label_tag(category.name) %>
+        <%= f.radio_button(:categories, category.name ) %><%= f.label(category.name) %>
       <% end %>	
 
     <h4> Song writer </h4>	
-      <%= text_field_tag(:songwriter,"", placeholder:"Song writer...", size: "24x6") %>
+      <%= f.text_field(:songwriter, placeholder:"Song writer...", size: "24x6") %>
 
-    <h4>Tags </h4>
-      <%= check_box(:song_tag1, "Cool", {}, 'Cool', "no") %> <%= label_tag("Cool") %>
-      <%= check_box(:song_tag2, "Hard", {}, 'Hard', "no") %> <%= label_tag("Hard") %>
-      <%= check_box(:song_tag3, "Begginer", {}, 'Begginer', "no") %> <%= label_tag("Begginer") %>
+    <h4>Tags</h4>
+      <% @tags.each do |tag| %>
+        <%= check_box_tag "song[tag_ids][]", tag.id, @song.tags.include?(tag) %>
+       <%= tag.name %>
+      <% end %>
 
     <h4> Video & URL </h4>
       <%= text_area_tag(:youtube_link,"", placeholder:"Youtube link...") %>
       <%= text_area_tag(:midi_link,"", placeholder:"Midi link...") %>
 
     <label for="file">File to Upload</label>
-       <%= file_field_tag "music_sheet" %>
+       <%= f.file_field "music_sheet" %>
 
 
-    <%= submit_tag("Create song") %>
+    <%= f.submit("Create song") %>
 
   <% end %>
   

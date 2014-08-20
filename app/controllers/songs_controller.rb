@@ -28,16 +28,18 @@ class SongsController < ApplicationController
 
   def new
     @categories = Category.all
+    @tags       = Tag.all
     @song = @instrument.songs.new
     authorize @song
   end
 
   def create
+  	@tags = Tag.all
     @song = @instrument.songs.new
-    @song.title = params[:song_title]
+    @song.assign_attributes(song_params)
+ 
     categories_assignment
-    @song.songwriter = params[:songwriter]
-    tags_assignment
+
     video_assignment
     midi_assignment
     music_sheet_assignment
@@ -134,23 +136,14 @@ protected
     @song.tags << tag3 if tag3
   end
 
-  def songs_params
-    params.require(:song).permit(:title, :categories, :youtube_link, :music_sheets, :tags, :songwriter)
+  def song_params
+    params.require(:song).permit(
+    	:title, :youtube_link,:music_sheets, :songwriter, :tag_ids, tags_attributes: [:name, :id])
   end
 
   def categories_assignment
     category = Category.find_by name: params[:song_category]
     @song.categories << category if category
-  end
-
-  def tags_assignment
-    tag1 = Tag.find_by(name: params[:song_tag1][:Cool]) unless params[:song_tag1][:Cool] == "no"
-    tag2 = Tag.find_by(name: params[:song_tag2][:Hard]) unless params[:song_tag2][:Hard] == "no"
-    tag3 = Tag.find_by(name: params[:song_tag3][:Begginer]) unless params[:song_tag2][:Begginer] == "no"
-  
-    @song.tags << tag1 if tag1
-    @song.tags << tag2 if tag2
-    @song.tags << tag3 if tag3
   end
 
   def video_assignment

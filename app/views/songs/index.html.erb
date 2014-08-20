@@ -2,39 +2,37 @@
   <div class="row">		
     <div class="small-8  columns">
 	  <h1><%= @instrument.name.capitalize %> songs</h1>
-		    <%= search_form_for [@instrument, @song, @q] do |f| %>
-			  <%= f.label :title_cont %>
-			  <%= f.search_field :title_cont %>
-			  <%= f.label :songwriter_cont %>
-			  <%= f.search_field :songwriter_cont %>
-			  <%= f.submit %>
-			<% end %>
+	    <%= search_form_for [@instrument, @song, @q] do |f| %>
+		  <%= f.label :title_cont %>
+		  <%= f.search_field :title_start %>
+		  <%= f.label :songwriter_cont %>
+		  <%= f.search_field :songwriter_start %>
+		  <%= f.submit %>
+		<% end %>
+	</div>
+  </div>	
 
-			<%= form_tag({controller: "songs", action: "found_songs"}, {method: :post}) do %>
-				<%= text_area_tag(:title,"", placeholder: "Buscar canción", size: "24x6") %>
-				<%= submit_tag("Submit") %>
-			<% end %>
-		</div>
-	</div>	
+  <div class="row">		
+	<div class="small-12  columns">
+	  <ul>
+		<% @songs.each do |song| %>
+	      <li>
+	        <span><%= link_to song.title, instrument_song_path(@instrument, song) %>
+			  <% if current_user && current_user.has_role?(:admin) %>
+			    <%= link_to(" Delete", instrument_song_path(@instrument, song), method: "delete", data: {confirm: "Are you sure?"}) %> 
+			  <% end %>
+			</span>
+		  </li>
+		<% end %>
+	  </ul>
 
-	<div class="row">		
-		<div class="small-12  columns">
-			<ul>
-			<% @songs.each do |song| %>
-				<li><span><%= link_to song.title, instrument_song_path(@instrument, song) %>
-					<% if current_user && current_user.has_role?(:admin) %>
-					   <%= link_to(" Delete", instrument_song_path(@instrument, song), method: "delete", data: {confirm: "Are you sure?"}) %> 
-					<% end %>
-				 </span></li>
-			<% end %>
-			</ul>
-			<%= button_to('Add song', new_instrument_song_path, method: :get) %>
-			<br>
-			<br>
-			<br>
-			<% if current_user && current_user.has_role?(:admin) %>
+	  <%= button_to('Add song', new_instrument_song_path, method: :get) %>
+	  <br>
+	  <br>
+	  <br>
+	  <% if current_user && current_user.has_role?(:admin) %>
 				<%= button_to('Delete instrument', instrument_path(@instrument.id), method: :delete) %>
-			<% end %>	
-		</div>
-	</div>		
+	  <% end %>	
+    </div>
+  </div>		
 </div>	

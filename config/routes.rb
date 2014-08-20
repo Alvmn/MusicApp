@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get "instruments/:instrument_id/songs/found_songs" => "songs#found_songs"
     post "instruments/:instrument_id/songs/found_songs" => "songs#found_songs"
     get "testpage" => "songs#testpage"
+    get "instruments/:instrument_id/songs/:id/music_sheets" => "songs#music_sheets", as: :music_sheets
   resources :instruments do
     resources :songs do
       resources :comments

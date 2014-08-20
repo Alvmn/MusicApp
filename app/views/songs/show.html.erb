@@ -1,4 +1,6 @@
-
+	<script src='/assets/jquery.transit.min.js'></script>
+	<script src="/assets/toggle.js"></script>
+	<div class="body">
 		<div class="row">
 	          <div class="small-12 small-offset-1 columns">
 				<h1><%= @song.title.capitalize %> </h1> <%= link_to("Edit me!", edit_instrument_song_path(@instrument, @song)) %>
@@ -6,9 +8,9 @@
 		</div>	  	
 
 		
-	<div class="row">
-			<div id="music_sheet" class='sheet'>
-				<%= image_tag(@song.music_sheets.url) %>
+		<div class="row">
+			<div class="small-12 small-offset-1 columns">
+				<button><h1> <%= link_to "Partituras", music_sheets_path(@instrument, @song) %> </h1></button>
 			</div>
 			
 			<% @videos.each do |video| %>
@@ -27,7 +29,7 @@
 
 	</div>	
 
-<iframe src="https://embed.spotify.com/?uri=spotify:track:24UStI5AYA7g5ufFDh3LH0" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<iframe src="https://embed.spotify.com/?uri=spotify:track:0ShZidyBdeUF00b4ontvom" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
 
 <!-- http://es.slideshare.net/txipi/las-nuevas-api-de-audio-en-html5# -->
 <% if @comments.empty? %>

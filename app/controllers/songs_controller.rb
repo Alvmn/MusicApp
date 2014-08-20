@@ -121,6 +121,10 @@ class SongsController < ApplicationController
       redirect_to action: 'index', controller: 'songs'
     end
   end
+  def music_sheets
+    @instrument = Instrument.friendly.find params[:instrument_id]
+    @song = @instrument.songs.friendly.find params[:id]
+  end
 
 protected
 
@@ -169,5 +173,4 @@ protected
     music_sheet = params[:song][:music_sheets]
      @song.music_sheets = music_sheet if music_sheet
   end
-
 end

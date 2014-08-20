@@ -18,16 +18,16 @@
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "login" %> 
            
         <% else %>
-        <%= link_to image_tag(('/images/fi-home.png'), class: 'img_home'), root_path, method: :get, class: 'home item' %> |
+          <%= link_to image_tag(('/images/logo4.png'), class: 'img_home'), root_path, method: :get, class: 'home item' %> |
 
-          <%= link_to "Register", '#', class: "login item", data: {:'reveal-id' => 'registerModal'}, :id => 'modal2'%> |
+            <%= link_to "Register", '#', class: "login item", data: {:'reveal-id' => 'registerModal'}, :id => 'modal2'%> |
 
-          <%= link_to "Login", '#', class: "login item", data: {:'reveal-id' => 'loginModal'}, :id => 'modal' %> 
-           
+            <%= link_to "Login", '#', class: "login item", data: {:'reveal-id' => 'loginModal'}, :id => 'modal' %> 
+             
         <% end %>
-          <div id="registerModal" class="reveal-modal medium" data-reveal>
+         <div id="registerModal" class="reveal-modal medium" data-reveal>
               <%= render file: '/devise/registrations/new' %>
-          </div>
+         </div>
               
           <div id="loginModal" class="reveal-modal medium" data-reveal>
             <%= render file: '/devise/sessions/new' %>

@@ -304,9 +304,9 @@ a.home:hover {
 	
 
 }
-.img_home {
-	height: 			25px;
-	width: 				25px;
+img.img_home {
+	/*height: 			25px;*/
+	width: 				120px;
 	
     
 

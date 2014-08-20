@@ -5,6 +5,8 @@ class SongsController < ApplicationController
 
   def index
     @songs = @instrument.songs
+    @q = @instrument.songs.search(params[:q])
+ 	@people = @q.result(distinct: true)
   end
   
   def show

@@ -142,7 +142,7 @@ protected
   end
 
   def categories_assignment
-    category = Category.find_by name: params[:song_category]
+    category = Category.find_by name: params[:categories]
     @song.categories << category if category
   end
 

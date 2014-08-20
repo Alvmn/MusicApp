@@ -13,3 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require foundation.min
+
+$('#modal').on('click', function(){
+	$('#loginModal').foundation('reveal', 'open');
+})
+
+$('#modal2').on('click', function(){
+	$('#registerModal').foundation('reveal', 'open');
+})

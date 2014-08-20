@@ -1,6 +1,6 @@
-<div class="body">
+<div class="body7 small-offset-3 columns">
 	<div class="row">		
-		<div class="small-4 small-offset-4 columns">
+		<div class="small-8  columns">
 			<h1><%= @instrument.name.capitalize %> songs</h1>
 			<%= form_tag({controller: "songs", action: "found_songs"}, {method: :post}) do %>
 				<%= text_area_tag(:title,"", placeholder: "Buscar canción", size: "24x6") %>

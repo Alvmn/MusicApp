@@ -5,6 +5,8 @@ class SongsController < ApplicationController
 
   def index
     @songs = @instrument.songs
+    @q = @instrument.songs.search(params[:q])
+ 	@result = @q.result(distinct: true)
   end
   
   def show
@@ -55,28 +57,40 @@ class SongsController < ApplicationController
   end
 
   def edit
+    @tags = Tag.all
     @song = @instrument.songs.friendly.find params[:id]
     @videos = @song.videos
     @midis = @song.midis
-    @categories = @song.categories
+    @categories = Category.all
 # AÑADIR POSIBILIDAD DE AÑADIR O QUITAR TAGS
-
-# METER ALGO DE ROLES DENTRO
-
-# Para cuando haya partitura
-# @sheet = @song.music_sheets
     authorize @song
   end
 
   def update
     song = @instrument.songs.friendly.find params[:id]
-    song.update title: params[:song_title]
-    song.categories.update name: params[:song_category]	
+    song.update song_params
     authorize song
-  # youtube_videos = song.videos.update
     if song.valid?
-	  song.videos.create url: params[:youtube_link]	
-	  song.midis.create url: params[:midi_link]	
+      if song.categories.first != nil
+       new_song_category = Category.find_by name: params[:song_category]
+       song.categories = []
+       song.categories << new_song_category
+       #Así está planteado para que sólo haya una categoría pero en un futuro se puede cambiar para 
+       # que haya más de una categoría por canción
+      else
+        new_song_category = Category.find_by name: params[:song_category]
+        song.categories << new_song_category
+      end 
+      if song.videos.first != nil
+        song.videos.first.update url: params[:youtube_link]
+      else
+        song.videos.create url: params[:youtube_link]
+      end 
+  	  if song.midis.first != nil
+        song.midis.first.update url: params[:midi_link]
+      else
+        song.midis.create name: params[:midi_link]
+      end 
       @song = @instrument.songs.friendly.find params[:id]
       authorize @song
   # youtube_videos = song.videos.update
@@ -107,6 +121,10 @@ class SongsController < ApplicationController
       redirect_to action: 'index', controller: 'songs'
     end
   end
+  def music_sheets
+    @instrument = Instrument.friendly.find params[:instrument_id]
+    @song = @instrument.songs.friendly.find params[:id]
+  end
 
 protected
 
@@ -136,9 +154,23 @@ protected
     	:title, :youtube_link,:music_sheets, :songwriter, :tag_ids, tags_attributes: [:name, :id])
   end
 
+  def categories_assignment
+    category = Category.find_by name: params[:categories]
+    @song.categories << category if category
+  end
+
+  def video_assignment
+    video = Video.find_by url: params[:youtube_link]
+    @song.videos << video if video
+  end
+
+  def midi_assignment
+    midi = Midi.find_by url: params[:midi_link]
+    @song.midis << midi if midi
+  end
+
   def music_sheet_assignment
     music_sheet = params[:song][:music_sheets]
      @song.music_sheets = music_sheet if music_sheet
   end
-
 end

@@ -5,6 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+RSpotify::authenticate("711cfbffc8b14c8b8ff4d8ed7c84f94f", "afc2160151c341d298755de3c8e28270")
 
 module MusicApp
   class Application < Rails::Application

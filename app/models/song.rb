@@ -4,7 +4,7 @@ class Song < ActiveRecord::Base
   has_many :midis, :dependent => :destroy
   has_many :music_sheets, :dependent => :destroy
   has_many :videos, :dependent => :destroy
-  has_many :comments, :dependent => :destroy
+  has_many :comments, dependent: :destroy
   # El :dependent => destroy es para que cuando se borre una song, se borren sus respectivos "hijos"
   belongs_to :instrument
 
@@ -17,6 +17,12 @@ class Song < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  has_attached_file :music_sheets, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :music_sheets, :content_type => /\Aimage\/.*\Z/
+  has_attached_file :music_sheets,
+  :url => "/system/:class/:attachment/:id/:style/:basename.:extension",
+  :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
+  validates_attachment :music_sheets,
+  :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
+
+  accepts_nested_attributes_for :tags, allow_destroy: true
+  accepts_nested_attributes_for :categories, allow_destroy: true
 end

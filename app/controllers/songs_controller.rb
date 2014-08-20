@@ -1,56 +1,8 @@
 class SongsController < ApplicationController
-	before_filter :authenticate_user!, except: [:index, :show, :found_songs] #autenticate! es una función creada por nosotros, más abajo
-	before_action :set_instrument, except: [:testpage]
-	
-	def index
-		@songs = @instrument.songs
-	end
 
-	def testpage
+  before_filter :authenticate_user!, except: [:index, :show, :found_songs] #autenticate! es una función creada por nosotros, más abajo
+  before_action :set_instrument
 
-	end
-	def show
-		@instrument = Instrument.friendly.find params[:instrument_id]
-		@song = @instrument.songs.friendly.find params[:id]
-		@midis = @song.midis
-		@videos = @song.videos
-		@comments = @song.comments.order(created_at: :desc).limit(10)
-	end
-
-	def found_songs
-		@songs = @instrument.songs.where "title LIKE ?", "%#{params[:title]}%"# Mejorar para buscar canciones 
-		unless @songs.empty? 
-		#título parecido al introducido
-			render 'found_songs'
-		else 
-		flash[:alert] = 'Ooohps! We could not find your song, did you write it right?'
-		render 'index'
-		end	
-	end
-
-	def new
-		@categories = Category.all
-		@song = @instrument.songs.new
-		authorize @song
-	end
-
-	def create
-		@song = @instrument.songs.new(title: params[:song_title]) 
-		authorize @song
-		if @song.save
-			categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
-			youtube_link = @song.videos.create url: params[:youtube_link]
-			midi_link = @song.midis.create url: params[:midi_link]
-			flash[:alert] = "Song succesfully created!"
-			redirect_to action: 'index', controller: 'songs'
-		else
-			flash[:alert] = "Sorry, try again"
-			@categories = Category.all
-			render 'new'
-		end
-
-	end
- 
   def index
     @songs = @instrument.songs
   end
@@ -76,16 +28,18 @@ class SongsController < ApplicationController
 
   def new
     @categories = Category.all
+    @tags       = Tag.all
     @song = @instrument.songs.new
     authorize @song
   end
 
   def create
+  	@tags = Tag.all
     @song = @instrument.songs.new
-    @song.title = params[:song_title]
+    # binding.pry
+    @song.assign_attributes(song_params)
     categories_assignment
-    @song.songwriter = params[:songwriter]
-    tags_assignment
+
     video_assignment
     midi_assignment
     music_sheet_assignment
@@ -146,7 +100,7 @@ class SongsController < ApplicationController
     if @song.destroy && @youtube_videos.destroy && @midis.destroy
       flash[:alert] = "Song succesfully deleted!"
       redirect_to action: 'index', controller: 'songs'
-# ESTOS DOS SON PARA EL DESTROY DEL EDIT
+    # ESTOS DOS SON PARA EL DESTROY DEL EDIT
     elsif @youtube_videos.destroy 
       flash[:alert] = "Video succesfully deleted!"
       redirect_to action: 'edit', controller: 'songs'
@@ -182,23 +136,14 @@ protected
     @song.tags << tag3 if tag3
   end
 
-  def songs_params
-    params.require(:song).permit(:title, :categories, :youtube_link, :music_sheets, :tags, :songwriter)
+  def song_params
+    params.require(:song).permit(
+    	:title, :youtube_link,:music_sheets, :songwriter, :tag_ids, tags_attributes: [:name, :id])
   end
 
   def categories_assignment
     category = Category.find_by name: params[:song_category]
     @song.categories << category if category
-  end
-
-  def tags_assignment
-    tag1 = Tag.find_by(name: params[:song_tag1][:Cool]) unless params[:song_tag1][:Cool] == "no"
-    tag2 = Tag.find_by(name: params[:song_tag2][:Hard]) unless params[:song_tag2][:Hard] == "no"
-    tag3 = Tag.find_by(name: params[:song_tag3][:Begginer]) unless params[:song_tag2][:Begginer] == "no"
-  
-    @song.tags << tag1 if tag1
-    @song.tags << tag2 if tag2
-    @song.tags << tag3 if tag3
   end
 
   def video_assignment
@@ -212,8 +157,8 @@ protected
   end
 
   def music_sheet_assignment
-    music_sheet = params[:music_sheet]
-    @song.music_sheets = music_sheet if music_sheet
+    music_sheet = params[:song][:music_sheets]
+     @song.music_sheets = music_sheet if music_sheet
   end
-  
+
 end

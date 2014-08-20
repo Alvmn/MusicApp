@@ -55,28 +55,40 @@ class SongsController < ApplicationController
   end
 
   def edit
+    @tags = Tag.all
     @song = @instrument.songs.friendly.find params[:id]
     @videos = @song.videos
     @midis = @song.midis
-    @categories = @song.categories
+    @categories = Category.all
 # AÑADIR POSIBILIDAD DE AÑADIR O QUITAR TAGS
-
-# METER ALGO DE ROLES DENTRO
-
-# Para cuando haya partitura
-# @sheet = @song.music_sheets
     authorize @song
   end
 
   def update
     song = @instrument.songs.friendly.find params[:id]
-    song.update title: params[:song_title]
-    song.categories.update name: params[:song_category]	
+    song.update song_params
     authorize song
-  # youtube_videos = song.videos.update
     if song.valid?
-	  song.videos.create url: params[:youtube_link]	
-	  song.midis.create url: params[:midi_link]	
+      if song.categories.first != nil
+       new_song_category = Category.find_by name: params[:song_category]
+       song.categories = []
+       song.categories << new_song_category
+       #Así está planteado para que sólo haya una categoría pero en un futuro se puede cambiar para 
+       # que haya más de una categoría por canción
+      else
+        new_song_category = Category.find_by name: params[:song_category]
+        song.categories << new_song_category
+      end 
+      if song.videos.first != nil
+        song.videos.first.update url: params[:youtube_link]
+      else
+        song.videos.create url: params[:youtube_link]
+      end 
+  	  if song.midis.first != nil
+        song.midis.first.update url: params[:midi_link]
+      else
+        song.midis.create name: params[:midi_link]
+      end 
       @song = @instrument.songs.friendly.find params[:id]
       authorize @song
   # youtube_videos = song.videos.update

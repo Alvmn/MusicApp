@@ -3,7 +3,7 @@
 	<div class="body">
 		<div class="row">
 	          <div class="small-12 small-offset-1 columns">
-				<h1><%= @song.title.capitalize %> </h1>
+				<h1><%= @song.title.capitalize %> </h1> <%= link_to("Edit me!", edit_instrument_song_path(@instrument, @song)) %>
 			  </div>
 		</div>	  	
 

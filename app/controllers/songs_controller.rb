@@ -5,6 +5,8 @@ class SongsController < ApplicationController
 
   def index
     @songs = @instrument.songs
+    @q = @instrument.songs.search(params[:q])
+ 	@result = @q.result(distinct: true)
   end
   
   def show
@@ -146,6 +148,21 @@ protected
   def song_params
     params.require(:song).permit(
     	:title, :youtube_link,:music_sheets, :songwriter, :tag_ids, tags_attributes: [:name, :id])
+  end
+
+  def categories_assignment
+    category = Category.find_by name: params[:categories]
+    @song.categories << category if category
+  end
+
+  def video_assignment
+    video = Video.find_by url: params[:youtube_link]
+    @song.videos << video if video
+  end
+
+  def midi_assignment
+    midi = Midi.find_by url: params[:midi_link]
+    @song.midis << midi if midi
   end
 
   def music_sheet_assignment

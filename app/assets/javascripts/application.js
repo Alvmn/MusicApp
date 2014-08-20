@@ -15,6 +15,7 @@
 //= require_tree .
 //= require foundation.min
 
+
 $('#modal').on('click', function(){
 	$('#loginModal').foundation('reveal', 'open');
 })

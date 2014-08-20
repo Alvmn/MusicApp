@@ -20,6 +20,8 @@ class Song < ActiveRecord::Base
   has_attached_file :music_sheets,
   :url => "/system/:class/:attachment/:id/:style/:basename.:extension",
   :path => ":rails_root/public/system/:class/:attachment/:id/:style/:basename.:extension"
+  validates_attachment :music_sheets,
+  :content_type => { :content_type => ["image/jpeg", "image/gif", "image/png"] }
 
   accepts_nested_attributes_for :tags, allow_destroy: true
   accepts_nested_attributes_for :categories, allow_destroy: true

@@ -36,8 +36,8 @@ class SongsController < ApplicationController
   def create
   	@tags = Tag.all
     @song = @instrument.songs.new
+    # binding.pry
     @song.assign_attributes(song_params)
- 
     categories_assignment
 
     video_assignment
@@ -157,8 +157,8 @@ protected
   end
 
   def music_sheet_assignment
-    music_sheet = params[:music_sheet]
-     @song.music_sheets_file_name = music_sheet if music_sheet
+    music_sheet = params[:song][:music_sheets]
+     @song.music_sheets = music_sheet if music_sheet
   end
 
 end

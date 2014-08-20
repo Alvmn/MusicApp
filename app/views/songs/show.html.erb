@@ -8,13 +8,9 @@
 		</div>	  	
 
 		
-				<div id="music_sheet" class='sheet'>
-					<%= image_tag((@song.title+".jpg")) %>
-				</div>
-		
 		<div class="row">
-			<div class="small-3 small-offset-1 columns">
-				<%= image_tag(@song.music_sheets.url, class: 'sheet') %>
+			<div id="music_sheet" class='sheet'>
+				<%= image_tag(@song.music_sheets.url) %>
 			</div>
 			
 			<% @videos.each do |video| %>

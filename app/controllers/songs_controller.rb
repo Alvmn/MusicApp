@@ -174,11 +174,11 @@ protected
 
   def music_sheet_assignment
 
-    music_sheet = params[:song][:music_sheets]
-    @song.music_sheets = music_sheet if music_sheet
+    # music_sheet = params[:song][:music_sheets]
+    # @song.music_sheets = music_sheet if music_sheet
 
-    # music_sheet = params[:song][:asheet]
-    # @song.asheet = music_sheet if music_sheet
+    music_sheet = params[:song][:asheet]
+    @song.asheet = music_sheet if music_sheet
 
   end
 end 

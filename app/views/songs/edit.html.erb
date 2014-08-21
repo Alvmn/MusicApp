@@ -15,11 +15,7 @@
           <%= g.file_field "sheet_file", multiple: true %>
        <% end %>
 
-
-    <%= f.submit("Create song") %>
-
-    <% end %>
-    <h4>Tags</h4>
+   <h4>Tags</h4>
 
       <% @tags.each do |tag| %>
         <%= check_box_tag "song[tag_ids][]", tag.id, @song.tags.include?(tag) %>
@@ -29,6 +25,9 @@
     <h4> Video & URL </h4>
       <%= text_area_tag(:youtube_link,"", placeholder:"Youtube link...") %>
       <%= text_area_tag(:midi_link,"", placeholder:"Midi link...") %>
+    <%= f.submit("Edit song") %>
+
+    <% end %>
 </div>
 
 

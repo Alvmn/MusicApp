@@ -1,7 +1,13 @@
-<h1> You are in found songs (Perfeccionad el método de búsqueda pls)</h1>
-<ul>
-<% @songs.each do |song| %>
-	<li><%= link_to(song.title, instrument_path(song)) %></li>
-<% end %>
-</ul>
+<div class="body5 small-offset-3 columns">
+	<div class="row">
+		<div class="small-6 columns">
+			<ul class="found_songs">
+			<% @songs.each do |song| %>
+				<li><%= link_to song.title, song_found_path(song.id) %></li>
+			<% end %>
+			</ul>
+		</div>
+	</div>		
+</div>	
+
 

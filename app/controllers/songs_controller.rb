@@ -10,8 +10,11 @@ class SongsController < ApplicationController
   end
   
   def show
-    @instrument = Instrument.friendly.find params[:instrument_id]
-    @song = @instrument.songs.friendly.find params[:id]
+    if params[:instrument_id]
+      @song = @instrument.songs.friendly.find params[:id] 
+    else
+      @song = Song.find params[:id]
+    end
     @midis = @song.midis
     @videos = @song.videos
     @comments = @song.comments.order(created_at: :desc).limit(10)
@@ -21,13 +24,13 @@ class SongsController < ApplicationController
   end
   
   def found_songs
-    @songs = @instrument.songs.where "title LIKE ?", "%#{params[:title]}%"# Mejorar para buscar canciones 
-
+    @songs = @instrument.songs.where "title LIKE ?", "%#{params[:title]}%" if params[:title]
+    @songs = @instrument.songs.where "songwriter LIKE ?", "%#{params[:songwriter]}%" if params[:songwriter]
     unless @songs.empty? 
   	  render 'found_songs'
     else 
       flash[:alert] = 'Ooohps! We could not find your song, did you write it right?'
-      render 'index'
+      redirect_to action:'index'
     end	
   end
 
@@ -48,17 +51,15 @@ class SongsController < ApplicationController
     
     if @song.save
   	  categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
-  	  if params[:song][:music_sheet] #No lleva :sheet file porque si no introduces nada en el archivo
+  	  youtube_link = @song.videos.create url: params[:youtube_link]
+      midi_link = @song.midis.create url: params[:midi_link]
+      if params[:song][:music_sheet] #No lleva :sheet file porque si no introduces nada en el archivo
         # te dará nil tal y como está puesto y nil[:sheet_file] no es algo posible
         params[:song][:music_sheet][:sheet_file].each do |sheet|
           @song.music_sheets.create sheet_file: sheet
         end
-      else
-
       end
       # binding.pry
-      youtube_link = @song.videos.create url: params[:youtube_link]
-  	  midi_link = @song.midis.create url: params[:midi_link]
       flash[:alert] = "Song succesfully created!"
   	  redirect_to action: 'index', controller: 'songs'
     else
@@ -174,7 +175,7 @@ class SongsController < ApplicationController
 protected
 
   def set_instrument
-    @instrument = Instrument.friendly.find params[:instrument_id]
+    @instrument = Instrument.friendly.find params[:instrument_id] if params[:instrument_id]
   end
 
   def authenticate!

@@ -32,6 +32,7 @@ class InstrumentsController < ApplicationController
     redirect_to controller: :instruments, action:'index'
   end	
 
+
 protected
 
   def set_instrument

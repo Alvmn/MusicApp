@@ -3,7 +3,9 @@
 
 <div>
 	<div id="music_sheet" class='sheet'>
-		<%= image_tag(@song.music_sheets.first.sheet_file) %>
+		<% @song.music_sheets.each do |sheet| %>
+			<%= image_tag(sheet.sheet_file) %>
+		<% end %>
 	</div>
 </div>
 <div>

@@ -16,7 +16,7 @@ class SongsController < ApplicationController
     @videos = @song.videos
     @comments = @song.comments.order(created_at: :desc).limit(10)
     track_search = RSpotify::Track.search(@song.title)
-    @track = track_search.first
+    @track = track_search.first if !track_search.empty?
     # binding.pry
   end
   
@@ -48,7 +48,11 @@ class SongsController < ApplicationController
     
     if @song.save
   	  categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
-  	  @song.music_sheets.create sheet_file: params[:song][:music_sheet][:sheet_file]
+  	  if params[:song][:music_sheet][:sheet_file]
+        params[:song][:music_sheet][:sheet_file].each do |sheet|
+          @song.music_sheets.create sheet_file: sheet
+        end
+      end
       # binding.pry
       youtube_link = @song.videos.create url: params[:youtube_link]
   	  midi_link = @song.midis.create url: params[:midi_link]

@@ -127,7 +127,7 @@ body {
 
 .body7{
 	width:				40%;
-	height: 			600px;
+	height: 			80%;
 	background-color: rgba(255, 255, 255, 0.5);
 	border-radius:		10px;
 	margin-left: 		20px;
@@ -170,11 +170,13 @@ button{
 	background-color: 	#D0EEED;
 }
 input {
-	background-color: white; 
-	border-radius: 		10px;
+	background-color: 	#FFBF00; 
 	margin-top: 		50px;
-	/*margin-left: 700px;*/
-
+	border:				none;
+	color: 				#7B8282;
+	height: 			40px;
+	border-radius: 		4px !important;
+	font-weight: 		bold;
 }
 #song_title{
 	width: 				90%;
@@ -247,6 +249,7 @@ label {
 
 a.login{
 	color: 				#D0EEED;
+	padding-bottom: 	26px;
 }
 
 a.login:hover {
@@ -280,8 +283,8 @@ a.home:hover {
 #user_nav {
 	/*no se si dar estilo o no
 	a la barra de navegación*/
-	float: right;
-	padding-right: 20px;
+	float: 				right;
+	padding-right: 		20px;
 }
 
 
@@ -321,15 +324,16 @@ img.img_home {
 }
 
 .icon-bar>*:hover{
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: 	rgba(255, 255, 255, 0.5);
 }
 
 .icon-bar{
-	background-color: #7B8282;
+	background-color: 	#7B8282;
 	/*width: 30% !important;*/
 }
 span {
-	color: #D0EEED;
+	color: 					#D0EEED;
+	padding-bottom: 		26px !important;
 }
 .spotify{
 	/*margin-left: 50%;

@@ -42,7 +42,6 @@ admin1 = User.create(email: 'asuperalvaro@hotmail.com', password: 'adminadmin', 
 admin1.add_role :admin
 
 smashbros = Instrument.find(1).songs.create(title: "Smash Bros Brawl")
-midis_smashbros = smashbros.midis.create(url:"SSBB Main Theme.mp3")
 youtube_videos = smashbros.videos.create(url:'<iframe width="640" height="390" src="//www.youtube.com/embed/gnAyTNUOkvc" frameborder="0" allowfullscreen></iframe>')
 
 Comment.create(content: 'Just setting up MusicApp')

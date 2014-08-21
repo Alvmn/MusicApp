@@ -1,7 +1,6 @@
 <script src='/assets/jquery.transit.min.js'></script>
 <script src="/assets/toggle.js"></script>
 <!-- 	<div class="body"> -->
-<<<<<<< HEAD
 <div class="row">
   <div class="small-6 small-offset-1 columns">
     <h1><%= @song.title.capitalize %> </h1> 
@@ -36,7 +35,7 @@
   <div class="small-4 columns">
     <% @midis.each do |midi| %>
       <div class="small-4 small-offset-6 columns">
-	  <audio src="/songs/<%= midi.url %>" controls preload />
+	  <audio src="<%= midi.audio_file %>" controls preload />
     <% end %>
   </div>
 

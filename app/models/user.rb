@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :songs
+
+  # attr_accessible :username, :email, :password, :password_confirmation, :remember_me
 end

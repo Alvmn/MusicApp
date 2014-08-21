@@ -52,12 +52,16 @@ class SongsController < ApplicationController
     if @song.save
   	  categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
   	  youtube_link = @song.videos.create url: params[:youtube_link]
-      midi_link = @song.midis.create url: params[:midi_link]
       if params[:song][:music_sheet] #No lleva :sheet file porque si no introduces nada en el archivo
         # te dará nil tal y como está puesto y nil[:sheet_file] no es algo posible
         params[:song][:music_sheet][:sheet_file].each do |sheet|
           @song.music_sheets.create sheet_file: sheet
         end
+      end
+      if params[:song][:audio] #No lleva :audio_file porque si no introduces nada en el archivo
+        # te dará nil tal y como está puesto y nil[:audio_file] no es algo posible
+        midi =params[:song][:audio][:audio_file] 
+        @song.midis.create audio_file: midi
       end
       # binding.pry
       flash[:alert] = "Song succesfully created!"

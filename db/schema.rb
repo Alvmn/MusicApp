@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820151207) do
+ActiveRecord::Schema.define(version: 20140821133016) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -53,8 +53,11 @@ ActiveRecord::Schema.define(version: 20140820151207) do
   end
 
   create_table "midis", force: true do |t|
-    t.integer "song_id"
-    t.string  "url"
+    t.integer  "song_id"
+    t.string   "audio_file_file_name"
+    t.string   "audio_file_content_type"
+    t.integer  "audio_file_file_size"
+    t.datetime "audio_file_updated_at"
   end
 
   create_table "music_sheets", force: true do |t|

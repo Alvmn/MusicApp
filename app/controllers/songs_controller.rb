@@ -15,6 +15,9 @@ class SongsController < ApplicationController
     @midis = @song.midis
     @videos = @song.videos
     @comments = @song.comments.order(created_at: :desc).limit(10)
+    track_search = RSpotify::Track.search(@song.title)
+    @track = track_search.first
+    # binding.pry
   end
   
   def found_songs

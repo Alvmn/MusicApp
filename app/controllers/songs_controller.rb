@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
 
-  before_filter :authenticate_user!, except: [:index, :show, :found_songs] #autenticate! es una función creada por nosotros, más abajo
+  before_filter :authenticate_user!, except: [:index, :show, :found_songs, :music_sheets] #autenticate! es una función creada por nosotros, más abajo
   before_action :set_instrument
 
   def index
@@ -48,7 +48,11 @@ class SongsController < ApplicationController
     
     if @song.save
   	  categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
-  	  @song.music_sheets.create sheet_file: params[:song][:music_sheet][:sheet_file]
+  	  if params[:song][:music_sheet][:sheet_file]
+        params[:song][:music_sheet][:sheet_file].each do |sheet|
+          @song.music_sheets.create sheet_file: sheet
+        end
+      end
       # binding.pry
       youtube_link = @song.videos.create url: params[:youtube_link]
   	  midi_link = @song.midis.create url: params[:midi_link]

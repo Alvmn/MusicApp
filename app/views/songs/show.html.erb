@@ -1,6 +1,7 @@
 <script src='/assets/jquery.transit.min.js'></script>
 <script src="/assets/toggle.js"></script>
 <!-- 	<div class="body"> -->
+
 <div class="row">
   <div class="small-6 small-offset-1 columns">
     <h1><%= @song.title.capitalize %> </h1> 
@@ -13,10 +14,9 @@
 
 
 <div class="row">
-
   <div class="spotify small-4 columns">
-    <% if @track %>
-	  <iframe  src="https://embed.spotify.com/?uri=spotify:track:<%= @track.id %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+    <% if @song_search %>
+	  <iframe  src="https://embed.spotify.com/?uri=spotify:track:<%= @song_search.id %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
     <% else %>
  	  This song couldn't be found in Spotify, sorry.
     <% end %>

@@ -6,7 +6,7 @@ class SongsController < ApplicationController
   def index
     @songs = @instrument.songs
     @q = @instrument.songs.search(params[:q])
- 	@result = @q.result(distinct: true)
+ 	  @result = @q.result(distinct: true)
   end
   
   def show
@@ -15,12 +15,15 @@ class SongsController < ApplicationController
     @midis = @song.midis
     @videos = @song.videos
     @comments = @song.comments.order(created_at: :desc).limit(10)
+    track_search = RSpotify::Track.search(@song.title)
+    @track = track_search.first
+    # binding.pry
   end
   
   def found_songs
     @songs = @instrument.songs.where "title LIKE ?", "%#{params[:title]}%"# Mejorar para buscar canciones 
+
     unless @songs.empty? 
-  #título parecido al introducido
   	  render 'found_songs'
     else 
       flash[:alert] = 'Ooohps! We could not find your song, did you write it right?'
@@ -40,6 +43,7 @@ class SongsController < ApplicationController
     @song = @instrument.songs.new
     # binding.pry
     @song.assign_attributes(song_params)
+    @song.user = current_user
     authorize @song
     
     if @song.save
@@ -124,9 +128,34 @@ class SongsController < ApplicationController
       redirect_to action: 'index', controller: 'songs'
     end
   end
+
   def music_sheets
     @instrument = Instrument.friendly.find params[:instrument_id]
     @song = @instrument.songs.friendly.find params[:id]
+  end
+
+  def spotify
+    spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+    # Now you can access user's private data, create playlists and much more
+
+    # Access private data
+    spotify_user.country #=> "US"
+    spotify_user.email   #=> "example@email.com"
+
+    # Create playlist in user's Spotify account
+    playlist = spotify_user.create_playlist!('my-awesome-playlist')
+
+    # Add tracks to a playlist in user's Spotify account
+    tracks = RSpotify::Track.search('Know')
+    playlist.add_tracks!(tracks)
+    playlist.tracks.first.name #=> "Somebody That I Used To Know"
+
+    # Access and modify user's music library
+    spotify_user.save_tracks!(tracks)
+    spotify_user.saved_tracks.size #=> 20
+    spotify_user.remove_tracks!(tracks)
+
+    # Check doc for more
   end
 
 protected
@@ -174,11 +203,11 @@ protected
 
   def music_sheet_assignment
 
-    music_sheet = params[:song][:music_sheets]
-    @song.music_sheets = music_sheet if music_sheet
+    # music_sheet = params[:song][:music_sheets]
+    # @song.music_sheets = music_sheet if music_sheet
 
-    # music_sheet = params[:song][:asheet]
-    # @song.asheet = music_sheet if music_sheet
+    music_sheet = params[:song][:asheet]
+    @song.asheet = music_sheet if music_sheet
 
   end
 end 

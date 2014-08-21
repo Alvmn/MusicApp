@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20140820151207) do
 
   create_table "music_sheets", force: true do |t|
     t.integer  "song_id"
-    t.string   "url"
     t.string   "sheet_file_file_name"
     t.string   "sheet_file_content_type"
     t.integer  "sheet_file_file_size"
@@ -80,13 +79,14 @@ ActiveRecord::Schema.define(version: 20140820151207) do
   create_table "songs", force: true do |t|
     t.string   "title"
     t.string   "image"
-    t.integer  "instrument_id",             limit: 255
+    t.integer  "instrument_id",       limit: 255
+    t.integer  "user_id"
     t.string   "songwriter"
     t.string   "slug"
-    t.string   "music_sheets_file_name"
-    t.string   "music_sheets_content_type"
-    t.integer  "music_sheets_file_size"
-    t.datetime "music_sheets_updated_at"
+    t.string   "asheet_file_name"
+    t.string   "asheet_content_type"
+    t.integer  "asheet_file_size"
+    t.datetime "asheet_updated_at"
   end
 
   create_table "songs_tags", force: true do |t|

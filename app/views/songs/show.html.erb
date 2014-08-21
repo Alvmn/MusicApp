@@ -3,7 +3,10 @@
 <!-- 	<div class="body"> -->
 		<div class="row">
 	          <div class="small-6 small-offset-1 columns">
-				<h1><%= @song.title.capitalize %> </h1> <%= link_to("Edit me!", edit_instrument_song_path(@instrument, @song)) %>
+				<h1><%= @song.title.capitalize %> </h1> 
+				<% if @song.user == current_user %>
+					<%= link_to("Edit me!", edit_instrument_song_path(@instrument, @song)) %>
+			  	<% end %>
 			  </div>
 			  
 		</div>	  	
@@ -12,8 +15,10 @@
 		<div class="row">
 			
 			<div class="spotify small-4 columns">
-					<iframe  src="https://embed.spotify.com/?uri=spotify:track:24UStI5AYA7g5ufFDh3LH0" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-				</div>
+					<iframe  src="https://embed.spotify.com/?uri=spotify:track:<%= @track.id %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+			</div>
+
+			<%= link_to 'Sign in with Spotify', '/auth/spotify' %>
 			
 			<div class="small-6 columns">
 				 <% @videos.each do |video| %>

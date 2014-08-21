@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/auth/spotify/callback', to: 'songs#spotify'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

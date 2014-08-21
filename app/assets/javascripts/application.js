@@ -18,7 +18,7 @@
 
 $('#modal').on('click', function(){
 	$('#loginModal').foundation('reveal', 'open');
-})
+});
 
 $('#modal2').on('click', function(){
 	$('#registerModal').foundation('reveal', 'open');
@@ -26,3 +26,10 @@ $('#modal2').on('click', function(){
 $('#modalcomments').on('click', function(){
 	$('#commentsModal').foundation('reveal', 'open');
 })
+
+$('#show_me').on('click', function(){
+	$('#sheet_shown').foundation('reveal', 'open');
+});
+
+
+

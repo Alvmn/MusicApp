@@ -2,9 +2,22 @@
 <script src="/assets/toggle.js"></script>
 
 <div>
-	<div id="music_sheet" class='sheet'>
-		<% @song.music_sheets.each do |sheet| %>
-			<%= image_tag(sheet.sheet_file) %>
-		<% end %>
-	</div>
+	<% @song.music_sheets.each do |sheet| %>
+			<% if sheet.sheet_file_content_type == "application/pdf" %>
+				<embed src="/images/adobe.jpg" width="200px" height = "300px"> </embed>
+			<% else %>
+				<embed src="<%= sheet.sheet_file %>" width="200px" height = "300px"> </embed>
+			<% end %>
+	<% end %>
+	<p><%= link_to "Show all music_sheets(including pdf)","#", data: {:'reveal-id' => 'sheet_shown'}, :id => 'show_me' %> </p>
+		
+</div>
+
+                       
+       
+<div>
+         <div id="sheet_shown" class="reveal-modal medium" data-reveal>
+              <%= render file: '/songs/show_sheet' %>
+              <a class="close-reveal-modal">&#215;</a>
+         </div>
 </div>

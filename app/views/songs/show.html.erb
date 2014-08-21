@@ -15,10 +15,12 @@
 		<div class="row">
 			
 			<div class="spotify small-4 columns">
+				<% if !@track.blank? %>
 					<iframe  src="https://embed.spotify.com/?uri=spotify:track:<%= @track.id %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+				<% else %>
+				 	This song couldn't be found in Spotify, sorry.
+				<% end %>
 			</div>
-
-			<%= link_to 'Sign in with Spotify', '/auth/spotify' %>
 			
 			<div class="small-6 columns">
 				 <% @videos.each do |video| %>

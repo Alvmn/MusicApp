@@ -56,7 +56,6 @@ class SongsController < ApplicationController
       # binding.pry
       youtube_link = @song.videos.create url: params[:youtube_link]
   	  midi_link = @song.midis.create url: params[:midi_link]
-      music_sheet_assignment
       flash[:alert] = "Song succesfully created!"
   	  redirect_to action: 'index', controller: 'songs'
     else
@@ -203,15 +202,5 @@ protected
   def midi_assignment
     midi = Midi.find_by url: params[:midi_link]
     @song.midis << midi if midi
-  end
-
-  def music_sheet_assignment
-
-    # music_sheet = params[:song][:music_sheets]
-    # @song.music_sheets = music_sheet if music_sheet
-
-    music_sheet = params[:song][:asheet]
-    @song.asheet = music_sheet if music_sheet
-
   end
 end 

@@ -1,16 +1,26 @@
 <%= @song.errors.messages %>
 <div class="body3 small-offset-3 columns">
   <h3>Song title</h3>
-    <%= form_for([@instrument, @song], multipart: true) do |f|%>
+    <%= form_for [@instrument, @song], :html => { multipart: true } do |f|%>
       <%= f.text_field(:title, placeholder:"Song title...", size: "24x6") %>
       <% @categories.each do |category| %>
         <%= radio_button_tag(:song_category, category.name ) %><%= f.label(category.name) %>
-      <% end %>	
+      <% end %> 
 
-    <h4> Song writer </h4>	
+    <h4> Song writer </h4>  
       <%= f.text_field(:songwriter, placeholder:"Song writer...", size: "24x6") %>
+       
+       <%= f.fields_for :music_sheet do |g| %>
+          <label for="file">File to Upload</label>
+          <%= g.file_field "sheet_file", multiple: true %>
+       <% end %>
 
+
+    <%= f.submit("Create song") %>
+
+    <% end %>
     <h4>Tags</h4>
+
       <% @tags.each do |tag| %>
         <%= check_box_tag "song[tag_ids][]", tag.id, @song.tags.include?(tag) %>
        <%= tag.name %>
@@ -19,14 +29,7 @@
     <h4> Video & URL </h4>
       <%= text_area_tag(:youtube_link,"", placeholder:"Youtube link...") %>
       <%= text_area_tag(:midi_link,"", placeholder:"Midi link...") %>
-
-    <label for="file">File to Upload</label>
-       <%= f.file_field "music_sheets" %>
-
-
-    <%= f.submit("Edit song") %>
-
-  <% end %>
-  
 </div>
+
+
 

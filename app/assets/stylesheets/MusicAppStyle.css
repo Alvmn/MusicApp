@@ -178,6 +178,12 @@ input {
 	border-radius: 		4px !important;
 	font-weight: 		bold;
 }
+
+input#song_music_sheet_sheet_file {
+	background-color: 	white;
+
+}
+
 #song_title{
 	width: 				90%;
 	margin-left: 		4%;
@@ -341,3 +347,4 @@ span {
 */
 
 }
+

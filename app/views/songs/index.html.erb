@@ -2,14 +2,15 @@
   <div class="row">		
     <div class="small-8  columns">
 	  <h1><%= @instrument.name.capitalize %> songs</h1>
-		    <%= search_form_for [@instrument, @song, @q] do |f| %>
-			  <%= f.label :title_cont %>
-			  <%= f.search_field :title_cont %>
-			  <%= f.label :songwriter_cont %>
-			  <%= f.search_field :songwriter_cont %>
-			  <%= f.submit %>
-			<% end %>
-
+		    
+<%= form_tag({controller: "songs", action: "found_songs"}, {method: :post}) do %>
+	<%= text_area_tag(:title,"", placeholder: "Buscar canción por título", size: "24x6") %>
+	<%= submit_tag("Submit") %>
+<% end %>
+<%= form_tag({controller: "songs", action: "found_songs"}, {method: :post}) do %>
+	<%= text_area_tag(:songwriter,"", placeholder: "Buscar canción por autor", size: "24x6") %>
+	<%= submit_tag("Submit") %>
+<% end %>
 			
 		</div>
 	</div>	
@@ -35,8 +36,3 @@
 		</div>
 	</div>		
 </div>	
-
-<%= form_tag({controller: "songs", action: "found_songs"}, {method: :post}) do %>
-				<%= text_area_tag(:title,"", placeholder: "Buscar canción", size: "24x6") %>
-				<%= submit_tag("Submit") %>
-			<% end %>

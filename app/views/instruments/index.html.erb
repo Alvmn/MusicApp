@@ -16,6 +16,15 @@
 			
 		</div>
 	<!-- </div> -->
+<%= form_tag({controller: "instruments", action: "found_songs"}, {method: :post}) do %>
+	<%= text_area_tag(:title,"", placeholder: "Buscar canción por título", size: "24x6") %>
+	<%= submit_tag("Submit") %>
+<% end %>
+<%= form_tag({controller: "instruments", action: "found_songs"}, {method: :post}) do %>
+	<%= text_area_tag(:songwriter,"", placeholder: "Buscar canción por autor", size: "24x6") %>
+	<%= submit_tag("Submit") %>
+<% end %>
+
 	<div class="row boxi">
 			<%= render @instruments %>			
 	</div>	

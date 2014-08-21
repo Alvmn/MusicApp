@@ -4,7 +4,8 @@ class CreateSongs < ActiveRecord::Migration
       t.string :title
       t.string :image
       t.string :instrument
-      t.string :category     
+      t.string :category
+      t.integer :user_id   
       # t.timestamps
     end
   end

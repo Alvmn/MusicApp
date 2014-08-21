@@ -6,7 +6,7 @@ class SongsController < ApplicationController
   def index
     @songs = @instrument.songs
     @q = @instrument.songs.search(params[:q])
- 	@result = @q.result(distinct: true)
+ 	  @result = @q.result(distinct: true)
   end
   
   def show
@@ -19,8 +19,8 @@ class SongsController < ApplicationController
   
   def found_songs
     @songs = @instrument.songs.where "title LIKE ?", "%#{params[:title]}%"# Mejorar para buscar canciones 
+
     unless @songs.empty? 
-  #título parecido al introducido
   	  render 'found_songs'
     else 
       flash[:alert] = 'Ooohps! We could not find your song, did you write it right?'
@@ -40,6 +40,7 @@ class SongsController < ApplicationController
     @song = @instrument.songs.new
     # binding.pry
     @song.assign_attributes(song_params)
+    @song.user = current_user
     authorize @song
     
     if @song.save

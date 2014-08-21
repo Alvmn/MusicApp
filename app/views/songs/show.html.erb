@@ -3,7 +3,10 @@
 <!-- 	<div class="body"> -->
 		<div class="row">
 	          <div class="small-6 small-offset-1 columns">
-				<h1><%= @song.title.capitalize %> </h1> <%= link_to("Edit me!", edit_instrument_song_path(@instrument, @song)) %>
+				<h1><%= @song.title.capitalize %> </h1> 
+				<% if @song.user == current_user %>
+					<%= link_to("Edit me!", edit_instrument_song_path(@instrument, @song)) %>
+			  	<% end %>
 			  </div>
 			  
 		</div>	  	

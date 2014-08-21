@@ -12,7 +12,7 @@
    <!--  <div class="topbar "> -->
       <div id="user_nav" class="icon-bar three-up">
         <% if user_signed_in? %>
-          Logged in as <span><%= current_user.email %></span>.
+          Logged in as <span><%= current_user.username %></span>.
           <%= link_to image_tag(('/images/logo4.png'), class: 'img_home'), root_path, method: :get, class: 'home' %> |
           <%= link_to 'Edit profile', edit_user_registration_path, html_options = {class: "login"} %> |
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "login" %> 

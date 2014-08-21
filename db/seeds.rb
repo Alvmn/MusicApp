@@ -32,13 +32,13 @@ Category.create(name:'Blues')
 Category.create(name:'Dubstep')
 
 
-admin3 = User.create(email: 'p.murcia.morilla@gmail.com', password: 'adminadmin', password_confirmation: 'adminadmin')
+admin3 = User.create(email: 'p.murcia.morilla@gmail.com', password: 'adminadmin', password_confirmation: 'adminadmin', username: 'Pedro')
 admin3.add_role :admin
 
-admin2 = User.create(email: 'henar_d0el_96@hotmail.es', password: 'adminadmin', password_confirmation: 'adminadmin')
+admin2 = User.create(email: 'henar_d0el_96@hotmail.es', password: 'adminadmin', password_confirmation: 'adminadmin', username: 'Henar')
 admin2.add_role :admin
 
-admin1 = User.create(email: 'asuperalvaro@hotmail.com', password: 'adminadmin', password_confirmation: 'adminadmin')
+admin1 = User.create(email: 'asuperalvaro@hotmail.com', password: 'adminadmin', password_confirmation: 'adminadmin', username: 'Álvaro')
 admin1.add_role :admin
 
 smashbros = Instrument.find(1).songs.create(title: "Smash Bros Brawl")

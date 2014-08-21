@@ -59,7 +59,7 @@
 
 <% @comments.each do |comment| %>
   <div style="border: 1px solid black">
-    <div style="border: 1px solid black"><%= comment.user.email %> said:</div>
+    <div style="border: 1px solid black"><%= comment.user.username %> said:</div>
     <div style="border: 1px solid black"><%= comment.content %></div>
     <div style="border: 1px solid black">Published: <%= comment.created_at %> | Last update: <%= comment.updated_at %>
     <% if comment.user == current_user %>

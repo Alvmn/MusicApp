@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @song.comments.create(content: params[:content])
+    @comment = @song.comments.create(content: params[:content], username: params[:username])
     @comment.user = current_user
     authorize @comment
     if @comment.save

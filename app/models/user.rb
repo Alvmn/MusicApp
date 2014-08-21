@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   has_many :songs
 
   # attr_accessible :username, :email, :password, :password_confirmation, :remember_me
+  validates :username, uniqueness: true
+
 end

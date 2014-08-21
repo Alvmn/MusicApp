@@ -23,6 +23,3 @@ $('#modal').on('click', function(){
 $('#modal2').on('click', function(){
 	$('#registerModal').foundation('reveal', 'open');
 })
-$("#flash_#{name}").on('click', function(){
-	$('#flashModal').foundation('reveal', 'open');
-})

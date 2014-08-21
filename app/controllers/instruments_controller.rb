@@ -32,6 +32,16 @@ class InstrumentsController < ApplicationController
     redirect_to controller: :instruments, action:'index'
   end	
 
+    def found_songs
+    @songs = Song.where "title LIKE ?", "%#{params[:title]}%"# Mejorar para buscar canciones 
+    unless @songs.empty? 
+      render 'found_songs'
+    else 
+      flash[:alert] = 'Ooohps! We could not find your song, did you write it right?'
+      render 'index'
+    end 
+  end
+
 protected
 
   def set_instrument

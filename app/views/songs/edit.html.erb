@@ -14,6 +14,10 @@
           <label for="file">File to Upload</label>
           <%= g.file_field "sheet_file", multiple: true %>
        <% end %>
+       <%= f.fields_for :audio do |g| %>
+          <label for="file">Audio to Upload</label>
+          <%= g.file_field "audio_file" %>
+       <% end %>
 
    <h4>Tags</h4>
 
@@ -24,7 +28,6 @@
 
     <h4> Video & URL </h4>
       <%= text_area_tag(:youtube_link,"", placeholder:"Youtube link...") %>
-      <%= text_area_tag(:midi_link,"", placeholder:"Midi link...") %>
       <%= f.submit("Edit song") %>
     
 

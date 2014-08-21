@@ -81,7 +81,7 @@ class SongsController < ApplicationController
        # que haya más de una categoría por canción
       else
         new_song_category = Category.find_by name: params[:song_category]
-        song.categories << new_song_category
+        song.categories << new_song_category if new_song_category
       end 
       if song.videos.first != nil
         song.videos.first.update url: params[:youtube_link]
@@ -91,7 +91,7 @@ class SongsController < ApplicationController
   	  if song.midis.first != nil
         song.midis.first.update url: params[:midi_link]
       else
-        song.midis.create name: params[:midi_link]
+        song.midis.create url: params[:midi_link]
       end 
       music_sheet_assignment # AÑADE OTRA PARTITURA
       @song = @instrument.songs.friendly.find params[:id]
@@ -173,7 +173,12 @@ protected
   end
 
   def music_sheet_assignment
-    music_sheet = params[:song][:asheet]
-    @song.asheet = music_sheet if music_sheet
+
+    music_sheet = params[:song][:music_sheets]
+    @song.music_sheets = music_sheet if music_sheet
+
+    # music_sheet = params[:song][:asheet]
+    # @song.asheet = music_sheet if music_sheet
+
   end
 end 

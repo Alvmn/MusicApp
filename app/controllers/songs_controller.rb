@@ -19,7 +19,7 @@ class SongsController < ApplicationController
     @videos = @song.videos
     @comments = @song.comments.order(created_at: :desc).limit(10)
     track_search = RSpotify::Track.search(@song.title)
-    @track = track_search.first if !track_search.empty?
+    @track = track_search.first if track_search
     # binding.pry
   end
   

@@ -4,12 +4,12 @@
 	  <h1><%= @instrument.name.capitalize %> songs</h1>
 		    
 <%= form_tag({controller: "songs", action: "found_songs"}, {method: :post}) do %>
-	<%= text_area_tag(:title,"", placeholder: "Buscar canción por título", size: "24x6") %>
-	<%= submit_tag("Submit") %>
+	<%= text_field_tag(:title,"", placeholder: "Buscar por título", size: "24x6") %>
+	<%= submit_tag("Buscar") %>
 <% end %>
 <%= form_tag({controller: "songs", action: "found_songs"}, {method: :post}) do %>
-	<%= text_area_tag(:songwriter,"", placeholder: "Buscar canción por autor", size: "24x6") %>
-	<%= submit_tag("Submit") %>
+	<%= text_field_tag(:songwriter,"", placeholder: "Buscar por autor", size: "24x6") %>
+	<%= submit_tag("Buscar") %>
 <% end %>
 			
 		</div>

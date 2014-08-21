@@ -1,64 +1,72 @@
-	<script src='/assets/jquery.transit.min.js'></script>
-	<script src="/assets/toggle.js"></script>
+<script src='/assets/jquery.transit.min.js'></script>
+<script src="/assets/toggle.js"></script>
 <!-- 	<div class="body"> -->
-		<div class="row">
-	          <div class="small-6 small-offset-1 columns">
-				<h1><%= @song.title.capitalize %> </h1> 
-				<% if @song.user == current_user %>
-					<%= link_to("Edit me!", edit_instrument_song_path(@instrument, @song)) %>
-			  	<% end %>
-			  </div>
-			  
-		</div>	  	
+<<<<<<< HEAD
+<div class="row">
+  <div class="small-6 small-offset-1 columns">
+    <h1><%= @song.title.capitalize %> </h1> 
+      <% if @song.user == current_user %>
+	    <%= link_to("Edit me!", edit_instrument_song_path(@instrument, @song)) %>
+	  <% end %>
+  </div>
+</div>	  	
 
-		
-		<div class="row">
-			
-			<div class="spotify small-4 columns">
-				<% if @track %>
-					<iframe  src="https://embed.spotify.com/?uri=spotify:track:<%= @track.id %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
-				<% else %>
-				 	This song couldn't be found in Spotify, sorry.
-				<% end %>
-			</div>	
-			<div class="small-6 columns">
-				 <% @videos.each do |video| %>
-			
-					<%= raw video.url %> 
-			
-				<% end %>
-			</div>	
 
-		</div>	
-	
-		<div class="row">
-			<div class="small-4 columns"
-			<% @midis.each do |midi| %>
-				<div class="small-4 small-offset-6 columns">
-					<audio src="/songs/<%= midi.url %>" controls preload />
-			</div>	
-			<% end %>
-			<div class="small-4 columns">
-				<button><h1> <%= link_to "Partituras", music_sheets_path(@instrument, @song) %> </h1></button>
-			</div>	
-		</div>	
+<div class="row">
+
+  <div class="spotify small-4 columns">
+    <% if @track %>
+	  <iframe  src="https://embed.spotify.com/?uri=spotify:track:<%= @track.id %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+    <% else %>
+ 	  This song couldn't be found in Spotify, sorry.
+    <% end %>
+  </div>	
+
+  <div class="small-6 columns">
+    <% @videos.each do |video| %>
+	  <%= raw video.url %> 
+    <% end %>
+  </div>	
+
+</div>	
+
+
+<div class="row">
+
+  <div class="small-4 columns">
+    <% @midis.each do |midi| %>
+      <div class="small-4 small-offset-6 columns">
+	  <audio src="/songs/<%= midi.url %>" controls preload />
+    <% end %>
+  </div>
+
+  <div class="small-4 columns">
+    <button>
+      <h1><%= link_to "Partituras", music_sheets_path(@instrument, @song) %></h1>
+    </button>
+  </div>	
+
+</div>	
 
 <!-- http://es.slideshare.net/txipi/las-nuevas-api-de-audio-en-html5# -->
 <% if @comments.empty? %>
-	<%= button_to('Be the first to comment!', new_instrument_song_comment_path(@instrument.slug, @song.slug), method: :get) %>
+  <%= button_to('Be the first to comment!', new_instrument_song_comment_path(@instrument.slug, @song.slug), method: :get) %>
 <% else %>
-	<%= button_to('Comment', new_instrument_song_comment_path(@instrument.slug, @song.slug), method: :get) %>
+  <%= button_to('Comment', new_instrument_song_comment_path(@instrument.slug, @song.slug), method: :get) %>
 <% end %>
 
+
 <% @comments.each do |comment| %>
-<div style="border: 1px solid black">
-	<div style="border: 1px solid black"><%= comment.user.email %> said:</div>
-	<div style="border: 1px solid black"><%= comment.content %></div>
-	<div style="border: 1px solid black">Published: <%= comment.created_at %> | Last update: <%= comment.updated_at %>
-		<% if comment.user == current_user %>
-			<%= link_to 'Edit', edit_instrument_song_comment_path(@instrument.slug, @song.slug, comment.id) %> <%= link_to 'Delete', instrument_song_comment_path(@instrument.slug, @song.slug, comment.id), method: :delete %></li>
-		<% end %>
-	</div>
-</div>
+  <div style="border: 1px solid black">
+    <div style="border: 1px solid black"><%= comment.user.email %> said:</div>
+    <div style="border: 1px solid black"><%= comment.content %></div>
+    <div style="border: 1px solid black">Published: <%= comment.created_at %> | Last update: <%= comment.updated_at %>
+    <% if comment.user == current_user %>
+      <%= link_to 'Edit', edit_instrument_song_comment_path(@instrument.slug, @song.slug, comment.id) %> <%= link_to 'Delete', instrument_song_comment_path(@instrument.slug, @song.slug, comment.id), method: :delete %></li>
+    <% end %>
+    </div>
+
+  </div>
 <br>
+
 <% end %>

@@ -83,7 +83,7 @@ body {
 
 .body3{
 	width: 				42%;
-	height: 			600px;
+	height: 			80%;
 	background-color: rgba(255, 255, 255, 0.5);
 	border-radius:		10px;
 	margin-left: 		20px;
@@ -268,7 +268,7 @@ a.home:hover {
 	color: 				red;
 	font-weight: 		bold;
 	font-size: 			20px;
-	margin-top: 		60px;
+	/*margin-top: 		60px;*/
 } 
 #flash_notice {
 	color: 				red;

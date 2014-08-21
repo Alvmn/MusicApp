@@ -124,6 +124,9 @@ class SongsController < ApplicationController
       render 'edit'
     end
   end
+  def show_sheet
+
+  end
 
   def destroy
     @song = @instrument.songs.friendly.find params[:id]

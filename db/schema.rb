@@ -77,12 +77,16 @@ ActiveRecord::Schema.define(version: 20140820151207) do
   add_index "roles", ["name"], name: "index_roles_on_name"
 
   create_table "songs", force: true do |t|
-    t.string  "title"
-    t.string  "image"
-    t.integer "instrument_id", limit: 255
-    t.integer "user_id"
-    t.string  "songwriter"
-    t.string  "slug"
+    t.string   "title"
+    t.string   "image"
+    t.integer  "instrument_id",       limit: 255
+    t.integer  "user_id"
+    t.string   "songwriter"
+    t.string   "slug"
+    t.string   "asheet_file_name"
+    t.string   "asheet_content_type"
+    t.integer  "asheet_file_size"
+    t.datetime "asheet_updated_at"
   end
 
   create_table "songs_tags", force: true do |t|

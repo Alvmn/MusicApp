@@ -48,15 +48,17 @@ class SongsController < ApplicationController
     
     if @song.save
   	  categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
-  	  if params[:song][:music_sheet][:sheet_file]
+  	  if params[:song][:music_sheet] #No lleva :sheet file porque si no introduces nada en el archivo
+        # te dará nil tal y como está puesto y nil[:sheet_file] no es algo posible
         params[:song][:music_sheet][:sheet_file].each do |sheet|
           @song.music_sheets.create sheet_file: sheet
         end
+      else
+
       end
       # binding.pry
       youtube_link = @song.videos.create url: params[:youtube_link]
   	  midi_link = @song.midis.create url: params[:midi_link]
-      music_sheet_assignment
       flash[:alert] = "Song succesfully created!"
   	  redirect_to action: 'index', controller: 'songs'
     else
@@ -96,12 +98,19 @@ class SongsController < ApplicationController
       else
         song.videos.create url: params[:youtube_link]
       end 
-  	  if song.midis.first != nil
+  	  if song.midis.first != nil # CAMBIAR LUEGO SI ESO PARA AÑADIR MÁS MIDIS
         song.midis.first.update url: params[:midi_link]
       else
         song.midis.create url: params[:midi_link]
       end 
-      music_sheet_assignment # AÑADE OTRA PARTITURA
+      if params[:song][:music_sheet] 
+        params[:song][:music_sheet][:sheet_file].each do |sheet|
+          song.music_sheets.create sheet_file: sheet
+        end
+      else
+
+      end
+       # AÑADE OTRA PARTITURA
       @song = @instrument.songs.friendly.find params[:id]
       authorize @song
   # youtube_videos = song.videos.update
@@ -203,15 +212,5 @@ protected
   def midi_assignment
     midi = Midi.find_by url: params[:midi_link]
     @song.midis << midi if midi
-  end
-
-  def music_sheet_assignment
-
-    # music_sheet = params[:song][:music_sheets]
-    # @song.music_sheets = music_sheet if music_sheet
-
-    music_sheet = params[:song][:asheet]
-    @song.asheet = music_sheet if music_sheet
-
   end
 end 

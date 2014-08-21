@@ -23,6 +23,8 @@ class SongsController < ApplicationController
     track_search.each do |track|
       if track.artists.first.name == @song.songwriter
         @song_search = track
+      elsif @song.songwriter.blank?
+        @song_search = track_search.first
       end
     end
     # binding.pry

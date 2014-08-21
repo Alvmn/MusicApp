@@ -21,12 +21,11 @@
 				 	This song couldn't be found in Spotify, sorry.
 				<% end %>
 			</div>	
-			<%end%>
+			
 			<div class="small-6 columns">
 				 <% @videos.each do |video| %>
 			
 					<%= raw video.url %> 
-			
 				<% end %>
 			</div>	
 
@@ -40,7 +39,7 @@
 			</div>	
 			<% end %>
 			<div class="small-4 columns">
-				<button><h1> <%= link_to "Partituras", music_sheets_path(@instrument, @song) %> </h1></button>
+				<button class="sheetbutton"><h1> <%= link_to "Partituras", music_sheets_path(@instrument, @song) %> </h1></button>
 			</div>	
 		</div>	
 

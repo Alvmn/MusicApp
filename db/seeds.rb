@@ -6,7 +6,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Song.create(title:'Someone like you', image:'https://www.tradebit.com/usr/aldy32/pub/9002/SomeoneLikeYou_PianoAccompaniment_-Adele.gif', image:'http://mail.google.com/')
+
 instruments = Instrument.create([{name: "flute"}, {name: "guitar"}, {name: "violin"}, {name: "piano"}, {name: "saxo"}])
 flutesongs = Instrument.find(1).songs.create([{title: "Flute song demo 1"}, {title: "Flute song demo 2"}])
 guitarsongs = Instrument.find(2).songs.create([{title: "Guitar song demo 1"}, {title: "Guitar song demo 2"}])

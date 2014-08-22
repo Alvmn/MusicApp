@@ -401,7 +401,8 @@ input#songwriter {
 
 table#found_songs {
 	margin-top:				20%;
-	margin-left: 			5%;
+	margin-left: 			0%;
+	width:					100%;
 }
 
 .title_found_songs{

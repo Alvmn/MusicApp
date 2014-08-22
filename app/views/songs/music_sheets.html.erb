@@ -4,12 +4,15 @@
 <div>
 	<% @song.music_sheets.each do |sheet| %>
 			<% if sheet.sheet_file_content_type == "application/pdf" %>
-				<embed src="/images/adobe.jpg" width="200px" height = "300px"> </embed>
+				<div class="sheet">
+					<%= link_to image_tag("/images/adobe.jpg"),"#", data: {:'reveal-id' => 'sheet_shown', :params => sheet}, :id => 'show_me' %> </p>
+				</div>
 			<% else %>
 				<embed src="<%= sheet.sheet_file %>" width="200px" height = "300px"> </embed>
 			<% end %>
 	<% end %>
 	<p><%= link_to "Show all music_sheets(including pdf)","#", data: {:'reveal-id' => 'sheet_shown'}, :id => 'show_me' %> </p>
+		
 		
 </div>
 

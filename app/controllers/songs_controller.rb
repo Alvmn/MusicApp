@@ -59,7 +59,10 @@ class SongsController < ApplicationController
     if @song.save
   	  categories_tags #Esto llama a la función categories tag de abajo/ no borrar xd
   	  youtube_link = @song.videos.create url: params[:youtube_link]
-      midi_link = @song.midis.create url: params[:midi_link]
+      if params[:song][:audio]
+        audio = params[:song][:audio][:audio_file]
+          @song.midis.create audio_file: audio
+      end
       if params[:song][:music_sheet] #No lleva :sheet file porque si no introduces nada en el archivo
         # te dará nil tal y como está puesto y nil[:sheet_file] no es algo posible
         params[:song][:music_sheet][:sheet_file].each do |sheet|
@@ -106,18 +109,24 @@ class SongsController < ApplicationController
       else
         song.videos.create url: params[:youtube_link]
       end 
-  	  if song.midis.first != nil # CAMBIAR LUEGO SI ESO PARA AÑADIR MÁS MIDIS
-        song.midis.first.update url: params[:midi_link]
-      else
-        song.midis.create url: params[:midi_link]
-      end 
+  	  
+      if params[:song][:audio]  
+        audio = params[:song][:audio][:audio_file]
+          if song.midis.first != nil # CAMBIAR LUEGO SI ESO PARA AÑADIR MÁS MIDIS
+              song.midis.first.update audio_file: audio
+            
+          else
+            params[:song][:audio][:audio_file].each do |sheet|
+              song.midis.first.create audio_file: audio
+          end
+      end
+
       if params[:song][:music_sheet] 
         params[:song][:music_sheet][:sheet_file].each do |sheet|
           song.music_sheets.create sheet_file: sheet
         end
-      else
-
       end
+    end
        # AÑADE OTRA PARTITURA
       @song = @instrument.songs.friendly.find params[:id]
       authorize @song

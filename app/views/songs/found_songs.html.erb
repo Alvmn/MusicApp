@@ -1,13 +1,13 @@
-<div class="body5 small-offset-3 columns">
+<!-- <div class="body5 small-offset-3 columns"> -->
 	<div class="row">
-		<div class="small-6 columns">
-			<ul class="found_songs">
+		<div class="small-6 small-offset-2 columns">
+			<ul>
 			<% @songs.each do |song| %>
-				<li><%= link_to song.title, instrument_song_path(@instrument, song) %></li>
+				<li class="found_songs"><%= link_to song.title, instrument_song_path(@instrument, song) %></li>
 			<% end %>
 			</ul>
 		</div>
 	</div>		
-</div>	
+<!-- </div>	 -->
 
 

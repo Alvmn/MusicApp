@@ -5,16 +5,10 @@ class SongsController < ApplicationController
 
   def index
     @songs = @instrument.songs
-    @q = @instrument.songs.search(params[:q])
- 	  @result = @q.result(distinct: true)
   end
   
   def show
-    if params[:instrument_id]
-      @song = @instrument.songs.friendly.find params[:id] 
-    else
-      @song = Song.find params[:id]
-    end
+    @song = @instrument.songs.friendly.find params[:id] 
     @midis = @song.midis
     @videos = @song.videos
     @comments = @song.comments.order(created_at: :desc).limit(10)
@@ -194,7 +188,7 @@ class SongsController < ApplicationController
 protected
 
   def set_instrument
-    @instrument = Instrument.friendly.find params[:instrument_id] if params[:instrument_id]
+    @instrument = Instrument.friendly.find params[:instrument_id]
   end
 
   def authenticate!

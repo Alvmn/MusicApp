@@ -1,6 +1,8 @@
-<div class="body5 small-offset-3 columns">
+<div class="body7 small-offset-3 columns">
 	<div class="row">
 		<div class="small-6 columns">
+
+		
 			<ul class="found_songs">
 			<% @songs.each do |song| %>
 				<li><%= link_to song.title, song_found_path(song.id) %></li>

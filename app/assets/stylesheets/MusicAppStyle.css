@@ -90,17 +90,10 @@ body {
 	padding-bottom:		30px;
 
 }
-/*.body4{
-	width:				45%;
-	height: 			600px;
-	background-color: rgba(255, 255, 255, 0.5);
-	border-radius:		10px;
-	margin-left: 		20px;
-	margin-top: 		50px;
-	padding-bottom:		30px;*/
+
 
 }
-.body5{
+.body5 {
 	width:				40%;
 	height: 			600px;
 	background-color: rgba(255, 255, 255, 0.5);
@@ -108,8 +101,6 @@ body {
 	margin-left: 		20px;
 	margin-top: 		50px;
 	padding-bottom:		30px;
-
-
 }
 
 .body6{
@@ -210,15 +201,15 @@ input {
 }
 
 #user_email.sign{
-	width:				90%;
+	width:				50%;
 }
 
 #user_password.sign{
-	width: 				50%;
+	width: 				40%;
 }
 
 #user_password_confirmation{
-	width: 				100%;
+	width: 				40%;
 }
 
 #instrument_name {
@@ -373,5 +364,47 @@ span {
 	margin-top: 			10%;
 }
 #commentsmodal {
-	top: 0px !important;
+	top:					 0px !important;
+}
+
+input#title {
+	margin-top:				 20%;
+}
+
+.search {
+	margin-top: 			0px;	
+}
+
+.search2 {
+	margin-top: 			0px;
+}
+
+input#songwriter {
+	margin-top: 			10%;
+	margin-left: 			0px;
+}
+
+.ulSongs {
+	margin-top: 			10%
+}
+
+.found_songs {
+	margin-top: 			30%;	
+}
+
+.log_in {
+	margin-top: 			0px;
+}
+.sign_up {
+	margin-top: 			0px;
+}
+
+table#found_songs {
+	margin-top:				20%;
+	margin-left: 			5%;
+}
+
+.title_found_songs{
+	margin-top:				10%;
+	margin-left: 			5%
 }

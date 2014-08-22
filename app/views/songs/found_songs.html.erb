@@ -1,11 +1,24 @@
 <!-- <div class="body5 small-offset-3 columns"> -->
 	<div class="row">
-		<div class="small-6 olumns">
-			<ul class="found_songs">
-			<% @songs.each do |song| %>
-				<li ><%= link_to song.title, instrument_song_path(@instrument, song) %></li>
-			<% end %>
-			</ul>
+
+		<h5 class="title_found_songs">Search</h5>
+		<div class="small-6 small-offset-1 columns">
+		  <table id="found_songs">
+		    <tr>
+			  <td><b>Song</b></td>
+			  <td><b>Artist</b></td>
+		    </tr>
+		    <% @songs.each do |song| %>
+			    <tr>
+			      <td><%= link_to song.title, song_found_path(song.id) %></td>
+			      <td><%= song.songwriter %></td>
+			      <% if current_user && current_user.has_role?(:admin) %>
+			  	    <td><%= link_to(" Delete", instrument_song_path(@instrument, song), method: "delete", data: {confirm: "Are you sure?"}) %></td>
+			  	  <% end %>
+			    </tr>
+		    <% end %>
+		</table>
+
 		</div>
 	</div>		
 <!-- </div>	 -->

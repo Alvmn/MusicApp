@@ -22,10 +22,14 @@ $('#modal').on('click', function(){
 
 $('#modal2').on('click', function(){
 	$('#registerModal').foundation('reveal', 'open');
-});
+})
+$('#modalcomments').on('click', function(){
+	$('#commentsModal').foundation('reveal', 'open');
+})
 
 $('#show_me').on('click', function(){
 	$('#sheet_shown').foundation('reveal', 'open');
 });
+
 
 

@@ -50,12 +50,16 @@
 
 
 <!-- http://es.slideshare.net/txipi/las-nuevas-api-de-audio-en-html5# -->
-<% if @comments.empty? %>
-  <%= button_to('Be the first to comment!', new_instrument_song_comment_path(@instrument.slug, @song.slug), method: :get) %>
-<% else %>
-  <%= button_to('Comment', new_instrument_song_comment_path(@instrument.slug, @song.slug), method: :get) %>
-<% end %>
-
+<div class="comments">
+	<% if @comments.empty? %>
+	  <%= link_to('Be the first to comment!','#', class: 'commentsbutton', data: {:'reveal-id' => 'commentsModal'}, :id => 'modalcomments')  %>
+	<% else %>
+	  <%= link_to('Comment','#', data: {:'reveal-id' => 'commentsModal'}, :id => 'modalcomments') %>
+	<% end %>
+	<div id="commentsModal" class="reveal-modal medium" data-reveal>
+	    <%= render file: '/comments/new' %>
+	</div>
+</div>	
 
 <% @comments.each do |comment| %>
   <div style="border: 1px solid black">

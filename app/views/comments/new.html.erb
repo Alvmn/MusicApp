@@ -1,4 +1,8 @@
-<%= form_tag(controller: "comments", action: "create", method: "post") do %>
-	<%= text_area_tag(:content,"", placeholder:"What do you think?...", size: "24x12") %>
+
+<h2> What doy you think?</h2>
+<%= form_tag(controller: "comments", action: "create", method: "post", song_id: @song.id, instrument_id: @instrument.id) do %>
+	<%= text_area_tag(:content,"", placeholder:"Write your comment...", size: "24x12", class: 'commentarea') %>
 	<%= submit_tag('Submit') %>
+	
 <% end %>
+

@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140821133016) do
 
   create_table "midis", force: true do |t|
     t.integer  "song_id"
+    t.string   "url"
     t.string   "audio_file_file_name"
     t.string   "audio_file_content_type"
     t.integer  "audio_file_file_size"

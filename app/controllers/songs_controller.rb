@@ -90,13 +90,17 @@ class SongsController < ApplicationController
     if song.valid?
       if song.categories.first != nil
        new_song_category = Category.find_by name: params[:song_category]
+       if params[:song_category] != nil
        song.categories = {}
        song.categories << new_song_category
        #Así está planteado para que sólo haya una categoría pero en un futuro se puede cambiar para 
        # que haya más de una categoría por canción
+       end
       else
+        if params[:song_category] != nil
         new_song_category = Category.find_by name: params[:song_category]
         song.categories << new_song_category if new_song_category
+        end
       end 
       if song.videos.first != nil
         song.videos.first.update url: params[:youtube_link]

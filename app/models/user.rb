@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :songs
+
+  attr_accessor :username
+
+  validates :username, uniqueness: true
 end

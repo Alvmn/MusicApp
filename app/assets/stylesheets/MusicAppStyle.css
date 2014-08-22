@@ -400,3 +400,13 @@ input#songwriter {
 .sign_up {
 	margin-top: 			0px;
 }
+
+table#found_songs {
+	margin-top:				20%;
+	margin-left: 			5%;
+}
+
+.title_found_songs{
+	margin-top:				10%;
+	margin-left: 			5%
+}

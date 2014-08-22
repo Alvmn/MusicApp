@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 RSpotify::authenticate("711cfbffc8b14c8b8ff4d8ed7c84f94f", "afc2160151c341d298755de3c8e28270")
-
+config.serve_static_assets = true
 
 module MusicApp
   class Application < Rails::Application

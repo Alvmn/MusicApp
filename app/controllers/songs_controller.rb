@@ -110,9 +110,7 @@ class SongsController < ApplicationController
               song.midis.first.update audio_file: audio
             
           else
-            params[:song][:audio][:audio_file].each do |sheet|
-              song.midis.first.create audio_file: audio
-          end
+           song.midis.create audio_file: audio
       end
 
       if params[:song][:music_sheet] 

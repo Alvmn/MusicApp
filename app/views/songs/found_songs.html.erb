@@ -1,9 +1,9 @@
 <!-- <div class="body5 small-offset-3 columns"> -->
 	<div class="row">
-		<div class="small-6 small-offset-2 columns">
-			<ul>
+		<div class="small-6 olumns">
+			<ul class="found_songs">
 			<% @songs.each do |song| %>
-				<li class="found_songs"><%= link_to song.title, instrument_song_path(@instrument, song) %></li>
+				<li ><%= link_to song.title, instrument_song_path(@instrument, song) %></li>
 			<% end %>
 			</ul>
 		</div>

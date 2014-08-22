@@ -12,6 +12,7 @@
    <!--  <div class="topbar "> -->
       <div id="user_nav" class="icon-bar three-up">
         <% if user_signed_in? %>
+  
 
           Logged in as <span><%= current_user.email %></span>.
           <%= link_to image_tag(('/images/logo4.png'), class: 'img_home'), root_path, method: :get, class: 'home' %> |

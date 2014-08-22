@@ -1,10 +1,10 @@
 
-<% @song.music_sheets.each do |sheet| %>
 <div class="sheet_clicked">
-			<% if sheet.sheet_file_content_type == "application/pdf" %>
-			<embed src="<%= sheet.sheet_file %>" width="100%" height="100%"> </embed>
-			<% else %>
-			<%= image_tag(sheet.sheet_file) %>
-			<% end %>
+	<% if asheet.sheet_file_content_type == "application/pdf" %>
+		<embed src="<%= asheet.sheet_file %>" width="100%" height="100%"> </embed>
+	<% else %>
+		<%= image_tag(asheet.sheet_file) %>
 	<% end %>
 </div>
+
+

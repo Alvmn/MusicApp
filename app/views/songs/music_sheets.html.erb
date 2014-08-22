@@ -5,22 +5,27 @@
 	<% @song.music_sheets.each do |sheet| %>
 			<% if sheet.sheet_file_content_type == "application/pdf" %>
 				<div class="sheet">
-					<%= link_to image_tag("/images/adobe.jpg"),"#", data: {:'reveal-id' => 'sheet_shown', :params => sheet}, :id => 'show_me' %> </p>
+					<%= link_to image_tag("/images/adobe.jpg"),"#", data: {:'reveal-id' => 'sheet_shown' +  sheet.id.to_s}, :id => 'show_me' + sheet.id.to_s %> </p>
 				</div>
 			<% else %>
-				<embed src="<%= sheet.sheet_file %>" width="200px" height = "300px"> </embed>
+				<div class="sheet">
+				<%= link_to image_tag(sheet.sheet_file),"#", data: {:'reveal-id' => 'sheet_shown' +  sheet.id.to_s}, :id => 'show_me' + sheet.id.to_s %>
+				</div>
 			<% end %>
-	<% end %>
-	<p><%= link_to "Show all music_sheets(including pdf)","#", data: {:'reveal-id' => 'sheet_shown'}, :id => 'show_me' %> </p>
-		
+	<% end %>		
 		
 </div>
 
                        
        
 <div>
-         <div id="sheet_shown" class="reveal-modal medium" data-reveal>
-              <%= render file: '/songs/show_sheet' %>
+	<% @song.music_sheets.each do |sheet| %>
+         <div id="sheet_shown<%= sheet.id%>" class="reveal-modal medium" data-reveal>
+              <%= render file: '/songs/show_sheet', :locals => {asheet: sheet} %>
               <a class="close-reveal-modal">&#215;</a>
          </div>
+         <script type="text/javascript">
+         	id_of_sheet(<%= sheet.id %>)
+         </script>
+    <% end %>
 </div>

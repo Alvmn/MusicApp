@@ -26,10 +26,10 @@ $('#modal2').on('click', function(){
 $('#modalcomments').on('click', function(){
 	$('#commentsModal').foundation('reveal', 'open');
 })
-
-$('#show_me').on('click', function(){
-	$('#sheet_shown').foundation('reveal', 'open');
-});
-
+id_of_sheet = function(sheet_id) {
+	$('#show_me' + sheet_id).on('click', function(){
+		$('#sheet_shown' + sheet_id).foundation('reveal', 'open');
+	});
+}
 
 

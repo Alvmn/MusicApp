@@ -1,7 +1,13 @@
 <script src='/assets/jquery.transit.min.js'></script>
 <script src="/assets/toggle.js"></script>
-
-<div>
+<style type="text/css">
+	img {
+		border: 2px solid black;
+		height: 100%;
+		border-radius: 10%;
+	}
+</style>
+<div class="small-offset-4 collums">
 	<% @song.music_sheets.each do |sheet| %>
 			<% if sheet.sheet_file_content_type == "application/pdf" %>
 				<div class="sheet">

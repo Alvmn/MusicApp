@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   
     post "found_songs" => "instruments#found_songs"
 
-    get "songs/:id" => "songs#show", as: :song_found
   resources :instruments do
     resources :songs do
       resources :comments

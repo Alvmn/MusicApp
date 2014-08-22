@@ -24,7 +24,7 @@
 		    </tr>
 		    <% @songs.each do |song| %>
 			    <tr>
-			      <td><%= link_to song.title, song_found_path(song.id) %></td>
+			      <td><%= link_to song.title, instrument_song_path(@instrument, song.slug) %></td>
 			      <td><%= song.songwriter %></td>
 			      <% if current_user && current_user.has_role?(:admin) %>
 			  	    <td><%= link_to(" Delete", instrument_song_path(@instrument, song), method: "delete", data: {confirm: "Are you sure?"}) %></td>

@@ -393,7 +393,7 @@ input#songwriter {
 }
 
 .log_in {
-	margin-top: 			0px;
+	margin-top: 			30%;
 }
 .sign_up {
 	margin-top: 			0px;
@@ -401,7 +401,8 @@ input#songwriter {
 
 table#found_songs {
 	margin-top:				20%;
-	margin-left: 			5%;
+	margin-left: 			0%;
+	width:					100%;
 }
 
 .title_found_songs{

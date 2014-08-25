@@ -12,8 +12,14 @@
     <div id="container">
    <!--  <div class="topbar "> -->
         <nav class="top-bar" data-topbar role="navigation">
-          <% if user_signed_in? %>
-            <section class="top-bar-section">
+          <section class="top-bar-section">
+            <% if user_signed_in? %>
+              <!-- Left Nav Section -->
+              <ul class="title-area">
+                <li class="name">
+                  <%= link_to image_tag('/images/logo4.png'), root_path, method: :get, class: 'home item' %>
+                </li>
+              </ul>
               <!-- Right Nav Section -->
               <ul class="right">
                 <li class="has-dropdown">

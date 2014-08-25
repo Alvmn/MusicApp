@@ -13,14 +13,15 @@
    <!--  <div class="topbar "> -->
         <nav class="top-bar" data-topbar role="navigation">
           <section class="top-bar-section">
+            <!-- Left Nav Section -->
+            <ul class="title-area">
+              <li class="name">
+                <%= link_to image_tag('/images/logo4.png'), root_path, method: :get, class: 'home item' %>
+              </li>
+            </ul>
+
+            <!-- Right Nav Section -->
             <% if user_signed_in? %>
-              <!-- Left Nav Section -->
-              <ul class="title-area">
-                <li class="name">
-                  <%= link_to image_tag('/images/logo4.png'), root_path, method: :get, class: 'home item' %>
-                </li>
-              </ul>
-              <!-- Right Nav Section -->
               <ul class="right">
                 <li class="has-dropdown">
                   <a href="#"><%= current_user.email %></a>
@@ -30,14 +31,14 @@
                   </ul>
                 </li>
               </ul>
-            </section>
-          <% else %>
-            <%= link_to image_tag(('/images/logo4.png'), class: 'img_home'), root_path, method: :get, class: 'home item' %> |
+            <% else %>
+              <ul class="right">
+                <li><%= link_to "Register", '#', class: "login item", data: {:'reveal-id' => 'registerModal'}, :id => 'modal2'%></li>
+                <li><%= link_to "Login", '#', class: "login item", data: {:'reveal-id' => 'loginModal'}, :id => 'modal' %></li>
+              </ul>
+            <% end %>
 
-            <%= link_to "Register", '#', class: "login item", data: {:'reveal-id' => 'registerModal'}, :id => 'modal2'%> |
-
-            <%= link_to "Login", '#', class: "login item", data: {:'reveal-id' => 'loginModal'}, :id => 'modal' %>
-          <% end %>
+          </section>
         </nav>
 
 

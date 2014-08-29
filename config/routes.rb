@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get "testpage" => "songs#testpage"
     get "instruments/:instrument_id/songs/:id/music_sheets" => "songs#music_sheets", as: :music_sheets
   
-    post "found_songs" => "instruments#found_songs"
+    post "found_songs" => "instruments#found_songs", as: :song_found
 
   resources :instruments do
     resources :songs do

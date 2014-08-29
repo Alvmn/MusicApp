@@ -1,60 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MusicApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <head>
+    <title>MusicApp</title>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
-  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD9/wAA/v8AAP9/AAD/vwAA/98AAPjXAAD03wAA99cAAPu/AAD8fwAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon" />
-   <%= javascript_include_tag 'application' %>
-</head>
-<body>
-  <!-- <div class="body"> -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD9/wAA/v8AAP9/AAD/vwAA/98AAPjXAAD03wAA99cAAPu/AAD8fwAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon" />
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <body>
     <div id="container">
-   <!--  <div class="topbar "> -->
-      <div id="user_nav" class="icon-bar three-up">
-        <% if user_signed_in? %>
-  
+      <nav class="top-bar" data-topbar role="navigation">
+        <section class="top-bar-section">
+          <!-- Left Nav Section -->
+          <ul class="title-area">
+            <li class="name">
+              <%= link_to image_tag('/images/logo4.png'), root_path, method: :get, class: 'home item' %>
+            </li>
+          </ul>
 
-          Logged in as <span><%= current_user.email %></span>.
-          <%= link_to image_tag(('/images/logo4.png'), class: 'img_home'), root_path, method: :get, class: 'home' %> |
-          <%= link_to 'Edit profile', edit_user_registration_path, html_options = {class: "login"} %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "login" %> 
-           
-        <% else %>
-          <%= link_to image_tag(('/images/logo4.png'), class: 'img_home'), root_path, method: :get, class: 'home item' %> |
+          <!-- Right Nav Section -->
+          <% if user_signed_in? %>
+            <ul class="right">
+              <li class="has-dropdown">
+                <a href="#"><%= current_user.email %></a>
+                <ul class="dropdown">
+                  <li><a href="#"><%= link_to 'Edit profile', edit_user_registration_path, html_options = { class: "login" } %></a></li>
+                  <li><a href="#"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "login" %></a></li>
+                </ul>
+              </li>
+            </ul>
+          <% else %>
+            <ul class="right">
+              <li><%= link_to "Register", '#', class: "login item", data: {:'reveal-id' => 'registerModal'}, :id => 'modal2'%></li>
+              <li><%= link_to "Login", '#', class: "login item", data: {:'reveal-id' => 'loginModal'}, :id => 'modal' %></li>
+            </ul>
+          <% end %>
 
-            <%= link_to "Register", '#', class: "login item", data: {:'reveal-id' => 'registerModal'}, :id => 'modal2'%> |
+        </section>
+      </nav>
 
-            <%= link_to "Login", '#', class: "login item", data: {:'reveal-id' => 'loginModal'}, :id => 'modal' %> 
-          
-             
-        <% end %>
-         <div id="registerModal" class="reveal-modal medium" data-reveal>
-              <%= render file: '/devise/registrations/new' %>
-         </div>
-              
-          <div id="loginModal" class="reveal-modal medium" data-reveal>
-            <%= render file: '/devise/sessions/new' %>
-            <a class="close-reveal-modal">&#215;</a>
-          </div>
+
+      <div id="registerModal" class="reveal-modal medium" data-reveal>
+        <%= render file: '/devise/registrations/new' %>
       </div>
-
-
-
-              <!-- <span class="topbarlogo"> MusicApp&reg;, developed with love and patience </span> -->
-<!--       </div> -->
-
-
-      
+            
+      <div id="loginModal" class="reveal-modal medium" data-reveal>
+        <%= render file: '/devise/sessions/new' %>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
 
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, id: "flash_#{name}" %>
       <% end %>
 
       <%= yield %>
+
+    </div> 
+
+    <script>
+      $(document).foundation();
+    </script>
   
-   </div> 
-  <!-- </div> 
- -->
-</body>
+  </body>
 </html>
